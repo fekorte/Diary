@@ -27,41 +27,32 @@ private:
 public:
 
     Business();
-
     ~Business();
 
+
+    //User related functions
     bool login(const QString& userName, const QString& password) override;
-
     bool registerUser(const QString& email, const QString& userName, const QString& password) override;
-
     void deleteCurrentUser() override;
-
     const Common::User& getCurrentUser() override;
 
+
+    //Entry related functions
     const QString saveEntry(const Common::Entry& entry) override;
-
     void deleteEntry(const Common::Entry& entryID) override;
-
-    bool createDiary(const QString& diaryName, int userID) override;
-
-    bool deleteDiary(const QString& diaryName) override;
-
-    const Common::Diary getDiary(const QString& diaryName, int userId) override;
-
-    const QMap<QString, Common::Diary>& getUserDiaryMap(int userID) override;
-
     int getNextPage(const QString& m_currentDiary, int currentUserID) override;
-
     const Common::Entry loadEntry(const QString& diaryName, int currentUserID, int diaryPage) override;
-
     const QStringList loadTopicList() override;
-
     void writeTopics(const QStringList& topicList) override;
-
     const QString travelContinentChoice(const QString& decision, const QStringList& continents) override;
-
     void deleteImageFile(const QString& filePath) override;
 
+
+    //Diary related functions
+    bool createDiary(const QString& diaryName, int userID) override;
+    bool deleteDiary(const QString& diaryName) override;
+    const Common::Diary getCurrentDiary(const QString& diaryName, int userId) override;
+    const QMap<QString, Common::Diary>& getUserDiaryMap(int userID) override;
 };
 }
 

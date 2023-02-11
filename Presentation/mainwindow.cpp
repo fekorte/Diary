@@ -77,7 +77,7 @@ void MainWindow::displayEntries(){
     ui->pastEntriesListWidget->clear();
     try{
 
-        QMap<int, Common::Entry> currentDiaryEntries = m_business->getDiary(m_currentDiary, m_business->getCurrentUser().getUserId()).getEntryMap();
+        QMap<int, Common::Entry> currentDiaryEntries = m_business->getCurrentDiary(m_currentDiary, m_business->getCurrentUser().getUserId()).getEntryMap();
         QStringList entriesString;
 
         if(filterInput->text().isEmpty()){
@@ -113,7 +113,7 @@ void MainWindow::displayFilteredEntries(){
     ui->pastEntriesListWidget->clear();
     try{
 
-        QMap<int, Common::Entry> currentDiaryEntries = m_business->getDiary(m_currentDiary, m_business->getCurrentUser().getUserId()).getEntryMap();
+        QMap<int, Common::Entry> currentDiaryEntries = m_business->getCurrentDiary(m_currentDiary, m_business->getCurrentUser().getUserId()).getEntryMap();
         QStringList entriesString;
         QString topicString = ui->filterInput->text();
 
@@ -227,7 +227,7 @@ void MainWindow::createDiary(){
         ui->comboBox_ChangeDiary->setCurrentText(text);
 
         m_myDiaryMap = m_business->getUserDiaryMap(m_business->getCurrentUser().getUserId());
-        m_currentDiary = m_business->getDiary(text, m_business->getCurrentUser().getUserId()).getDiaryName();
+        m_currentDiary = m_business->getCurrentDiary(text, m_business->getCurrentUser().getUserId()).getDiaryName();
 
         QMessageBox newDiaryMessage;
         newDiaryMessage.setText("Success! Your diary is waiting for your input.");

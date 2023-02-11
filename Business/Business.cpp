@@ -25,6 +25,8 @@ namespace Business {
 
     Business::~Business(){}
 
+
+    //User related functions
     bool Business::login(const QString& userName,const QString& password){
 
          return m_userManager.processLogin(userName, password);
@@ -52,26 +54,9 @@ namespace Business {
          return m_userManager.getCurrentUser();
      }
 
-     bool Business::createDiary(const QString& diaryName, int userID){
 
-        return m_diaryManager.processCreateDiary(diaryName, userID);
-     }
 
-     bool Business::deleteDiary(const QString& diaryName) {
-
-         return m_diaryManager.deleteDiary(diaryName);
-     }
-
-     const Common::Diary Business::getDiary(const QString& diaryName, int userId){
-
-         return m_diaryManager.getCurrentDiary(diaryName, userId);
-     }
-
-     const QMap<QString, Common::Diary>& Business::getUserDiaryMap(int userID){
-
-         return m_diaryManager.getUserDiaryMap(userID);
-     }
-
+    //Entry related functions
     const QString Business::saveEntry(const Common::Entry& currentEntry) {
 
         return m_entryManager.saveEntry(currentEntry);
@@ -111,5 +96,28 @@ namespace Business {
     void Business::deleteImageFile(const QString& filePath){
 
         m_entryManager.deleteImageFile(filePath);
+    }
+
+
+    //Diary related functions
+
+    bool Business::createDiary(const QString& diaryName, int userID){
+
+       return m_diaryManager.processCreateDiary(diaryName, userID);
+    }
+
+    bool Business::deleteDiary(const QString& diaryName) {
+
+        return m_diaryManager.deleteDiary(diaryName);
+    }
+
+    const Common::Diary Business::getCurrentDiary(const QString& diaryName, int userId){
+
+        return m_diaryManager.getCurrentDiary(diaryName, userId);
+    }
+
+    const QMap<QString, Common::Diary>& Business::getUserDiaryMap(int userID){
+
+        return m_diaryManager.getUserDiaryMap(userID);
     }
 }
