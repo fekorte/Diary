@@ -148,7 +148,6 @@ void EntryView::saveCurrentEntry(){
     }
 }
 
-
 void EntryView::updateEntry(const Common::Entry& entry){
 
      QString text;
@@ -169,7 +168,6 @@ void EntryView::updateEntry(const Common::Entry& entry){
         QMessageBox::information(this, "Entry Updated!", "Your diary entry has been updated.");
         ui->entryEdit->setReadOnly(true);
         ui->entryEdit->setFocus();
-
     }
 }
 
@@ -185,8 +183,6 @@ void EntryView::deleteEntry(const Common::Entry& entry){
         m_b->deleteEntry(entry);
         ui->entryEdit->setText("");
     }
-
-    showMainWindow();
 }
 
 

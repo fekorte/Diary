@@ -77,6 +77,10 @@ void MainWindow::displayEntries(){
     ui->pastEntriesListWidget->clear();
     try{
 
+        if(m_myDiaryMap.isEmpty()){
+            return;
+        }
+
         QMap<int, Common::Entry> currentDiaryEntries = m_business->getCurrentDiary(m_currentDiary, m_business->getCurrentUser().getUserId()).getEntryMap();
         QStringList entriesString;
 
@@ -256,7 +260,11 @@ void MainWindow::deleteDiary(){
     newDiaryMessage.setText(m_currentDiary + " has been removed. Time for something new!");
     newDiaryMessage.exec();
 
-    m_currentDiary = ui->comboBox_ChangeDiary->currentText();
+    if(!m_myDiaryMap.isEmpty()){
+        m_currentDiary = ui->comboBox_ChangeDiary->currentText();
+    } else {
+        m_currentDiary.clear();
+    }
 
     displayEntries();
 }
