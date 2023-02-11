@@ -216,17 +216,12 @@ void MainWindow::createDiary(){
     if (ok && !text.isEmpty()){
         try {
             if (! m_business->createDiary(text, m_business->getCurrentUser().getUserId())){
-                QMessageBox msgBox;
-                msgBox.setText("This diary already exists. Choose a different name.");
-                msgBox.exec();
+                QMessageBox::warning(nullptr,"DiaryApp", "This diary already exists. Choose a different name.");
                 return;
             }
 
         }  catch(std::exception& e){
-            QMessageBox msg;
-            msg.setText(e.what());
-            msg.setWindowTitle("Failed to create a new Diary!");
-            msg.exec();
+            QMessageBox::warning(nullptr,"DiaryApp", e.what());
             this->show();
         }
 
@@ -267,9 +262,7 @@ void MainWindow::deleteDiary(){
     ui->comboBox_ChangeDiary->clear();
     ui->comboBox_ChangeDiary->addItems(getDiaryNameList());
 
-    QMessageBox newDiaryMessage;
-    newDiaryMessage.setText(m_currentDiary + " has been removed. Time for something new!");
-    newDiaryMessage.exec();
+    QMessageBox::information(nullptr,"DiaryApp", m_currentDiary + " has been removed. Time for something new!");
 
     if(!m_myDiaryMap.isEmpty()){
         m_currentDiary = ui->comboBox_ChangeDiary->currentText();
