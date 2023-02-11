@@ -2,6 +2,7 @@
 #include "Common/User.h"
 #include "Business.h"
 #include "Persistence/FilePersistence.h"
+#include <QDebug>
 
 /**
  *
@@ -53,6 +54,13 @@ namespace Business{
         // update current diary with the new entry
         if (m_diaryManager != nullptr) {
 
+
+            if(entry.getTopics().contains("Travelling") && !entry.getPathToImgFile().isEmpty()){
+
+                QString newImagePath = m_filePersistence->saveImageFile(entry.getPathToImgFile());
+                entry.setPathToImgFile(newImagePath);
+            }
+
             // set current diary
             Common::Diary currentDiary = m_diaryManager->getCurrentDiary(entry.getDiaryName(),entry.getUserID());
 
@@ -97,6 +105,11 @@ namespace Business{
 
         // update current diary by deleting the selected entry
         if (m_diaryManager != nullptr) {
+
+            if(entry.getTopics().contains("Travelling")){
+                deleteImageFile(entry.getPathToImgFile());
+                deleteImageFile(entry.getPathToMapFile());
+            }
 
             // set current diary
             Common::Diary currentDiary = m_diaryManager->getCurrentDiary(entry.getDiaryName(),entry.getUserID());
@@ -145,7 +158,7 @@ namespace Business{
 
         return EntryManager::entriesCurrentDiary;
 
-    };
+    }
 
     //void setCurrentDiaryEntries(QList<Common::Entry> entries){
         //EntryManager::entriesCurrentDiary = entries;
@@ -175,6 +188,33 @@ namespace Business{
 
     const QStringList EntryManager::loadTopicList(){
         return m_filePersistence->loadTopicListFromFile();
+    }
+
+
+    const QString EntryManager::travelContinentChoice(const QString& decision, const QStringList& continents){
+        QString selectedMap;
+        switch(continents.indexOf(decision))
+            {
+                case 0:
+                    return selectedMap = ":/Images/Images/asia.jpg";
+                case 1:
+                    return selectedMap = ":/Images/Images/africa.jpg";
+                case 2:
+                    return selectedMap = ":/Images/Images/northAmerica.jpg";
+                case 3:
+                    return selectedMap = ":/Images/Images/southAmerica.jpg";
+                case 4:
+                    return selectedMap = ":/Images/Images/europe.jpg";
+                case 5:
+                    return selectedMap = ":/Images/Images/australia.jpg";
+                default:
+                    qDebug() << "Invalid map selected.";
+                    return selectedMap;
+        }
+    }
+
+    void EntryManager::deleteImageFile(const QString& filePath){
+        m_filePersistence->deleteImageFile(filePath);
     }
 
 }

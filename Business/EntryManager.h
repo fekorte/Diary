@@ -41,6 +41,9 @@ public:
     void writeTopics(QStringList topicList);
     const QStringList loadTopicList();
 
+    const QString travelContinentChoice(const QString& decision, const QStringList& continents);
+    void deleteImageFile(const QString& filePath);
+
 };
 }
 

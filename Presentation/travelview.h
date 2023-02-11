@@ -8,18 +8,19 @@
 #include "Common/Entry.h"
 #include "moodview.h"
 
-/**
+/*
  * @author Chachulski, Korte, Mathea
  */
 
-
 namespace Ui {
+
 class TravelView;
 }
 
 class TravelMapView;
 
 class TravelView : public QWidget{
+
     Q_OBJECT
 
 public:
@@ -30,14 +31,16 @@ public:
 protected:
     void closeEvent(QCloseEvent* event) override;
     void initialize();
-    void deleteEntry(Common::Entry entry);
-    void updateEntry(Common::Entry entry);
+    void showExerciseView(const QString& mood);
+    void showMainWindow();
+    void deleteEntry(const Common::Entry& entry);
+    void updateEntry(const Common::Entry& entry);
     void displayMap();
-    void saveImage();
     void displayImage();
     void displayFullSize(const QString& filePath);
 
 private slots:
+    void goBack();
     void onButtonDescription(const QString &description);
     void travelMapButtonPressed(const QString& message);
     void saveEntry();
@@ -46,9 +49,9 @@ private slots:
     void addImage();
     void addMap();
     void addDate();
-    void showImage();
-    void showMap();
     void addNote();
+    void removeImage();
+    void removeMap();
 
 private:
     Ui::TravelView* ui;
@@ -64,7 +67,7 @@ private:
     QString m_pathToMap;
     QString m_date;
     QString m_note;
-
 };
+
 
 #endif // TRAVELVIEW_H

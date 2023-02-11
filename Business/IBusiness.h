@@ -32,11 +32,8 @@ public:
     virtual const Common::Entry loadEntry(QString diaryName, int currentUser, int diaryPage)=0;
     virtual const QStringList loadTopicList()=0;
     virtual void writeTopics(QStringList topicList)=0;
-
-    /* Methode für die Anzeige eines Eintrages.
-    Für die Bearbeitung entweder A: eine zweite Methode ohne const anlegen,
-    oder B: diese Methode ändern ?? */
-    //virtual const Common::Entry& loadEntry(int diaryID, int entryID) = 0;
+    virtual const QString travelContinentChoice(const QString& decision, const QStringList& continents) = 0;
+    virtual void deleteImageFile(const QString& filePath) = 0;
 
 };
 }

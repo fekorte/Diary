@@ -62,6 +62,10 @@ public:
 
     void writeTopics(QStringList topicList) override;
 
+    const QString travelContinentChoice(const QString& decision, const QStringList& continents) override;
+
+    void deleteImageFile(const QString& filePath) override;
+
 };
 }
 

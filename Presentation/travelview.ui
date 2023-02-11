@@ -66,10 +66,10 @@ background-repeat: repeat-y;</string>
     <widget class="QTextEdit" name="textEdit">
      <property name="geometry">
       <rect>
-       <x>43</x>
-       <y>0</y>
-       <width>411</width>
-       <height>591</height>
+       <x>50</x>
+       <y>30</y>
+       <width>401</width>
+       <height>541</height>
       </rect>
      </property>
      <property name="font">
@@ -203,7 +203,7 @@ background-repeat: repeat-y;</string>
    <property name="geometry">
     <rect>
      <x>1500</x>
-     <y>560</y>
+     <y>610</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -241,7 +241,7 @@ background-repeat: repeat-y;</string>
    <property name="geometry">
     <rect>
      <x>1500</x>
-     <y>650</y>
+     <y>700</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -298,7 +298,7 @@ background-repeat: repeat-y;</string>
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>580</y>
+     <y>680</y>
      <width>251</width>
      <height>61</height>
     </rect>
@@ -317,7 +317,7 @@ background-repeat: repeat-y;</string>
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>690</y>
+     <y>570</y>
      <width>251</width>
      <height>61</height>
     </rect>
@@ -330,6 +330,44 @@ background-repeat: repeat-y;</string>
    </property>
    <property name="text">
     <string>Go Back</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_11">
+   <property name="geometry">
+    <rect>
+     <x>1510</x>
+     <y>80</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>aakar</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Remove map</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_12">
+   <property name="geometry">
+    <rect>
+     <x>1500</x>
+     <y>520</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>aakar</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Remove image</string>
    </property>
   </widget>
  </widget>
