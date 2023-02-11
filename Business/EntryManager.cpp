@@ -25,22 +25,12 @@ namespace Business{
 
     EntryManager::EntryManager(){
 
-        //m_business = new Business();
         m_diaryManager = new DiaryManager();
         m_userManager = new UserManager();
         m_filePersistence = new Persistence::FilePersistence();
-
-        // load first entries for testing
-        // saveEntry();
-
-        //load entries from persistence into EntryManager::entriesCurrentDiary
-
-
     }
 
     EntryManager::~EntryManager(){
-//        delete m_business;
-//        m_business = nullptr;
 
         delete m_diaryManager;
         m_diaryManager = nullptr;
@@ -150,19 +140,12 @@ namespace Business{
 
 
 
-    //const Common::Entry& createTravelEntry(int userId, const QString& note, const QString& date, const QStringList& topic, const QString& pathToImg, const QString& pathToMap, const QString& place){
-        //map needed of current user entries to generate id/ page attribute
-   // }
-
     QMap<int,Common::Entry> EntryManager::getCurrentDiaryEntries(){
 
         return EntryManager::entriesCurrentDiary;
 
     }
 
-    //void setCurrentDiaryEntries(QList<Common::Entry> entries){
-        //EntryManager::entriesCurrentDiary = entries;
-    //};
 
     const Common::Entry EntryManager::loadEntry(QString diaryName,int m_currentUserID, int diaryPage){
 

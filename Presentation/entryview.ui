@@ -79,10 +79,10 @@ background-repeat: repeat-y;</string>
   <widget class="QScrollArea" name="scrollArea_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>250</y>
-     <width>241</width>
-     <height>431</height>
+     <x>30</x>
+     <y>180</y>
+     <width>231</width>
+     <height>491</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -93,19 +93,34 @@ background-repeat: repeat-y;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>239</width>
-      <height>429</height>
+      <width>229</width>
+      <height>489</height>
      </rect>
     </property>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QTableWidget" name="moodTableWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>1</y>
-       <width>241</width>
-       <height>421</height>
+       <x>10</x>
+       <y>0</y>
+       <width>211</width>
+       <height>491</height>
       </rect>
      </property>
+     <property name="columnCount">
+      <number>12</number>
+     </property>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
     </widget>
    </widget>
   </widget>
@@ -113,7 +128,7 @@ background-repeat: repeat-y;</string>
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>210</y>
+     <y>150</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -200,27 +215,30 @@ background-repeat: repeat-y;</string>
     <string>Add Mood</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>241</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="deleteEntryButton">
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>560</y>
+     <y>430</y>
      <width>151</width>
      <height>61</height>
     </rect>
    </property>
    <property name="text">
     <string>Delete Entry</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="goBackButton">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>580</y>
+     <width>151</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Go Back</string>
    </property>
   </widget>
  </widget>

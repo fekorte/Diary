@@ -20,7 +20,6 @@ SOURCES += \
         Business/Business.cpp \
         Business/DiaryManager.cpp \
         Business/EntryManager.cpp \
-        Business/MoodTrackManager.cpp \
         Business/UserManager.cpp \
         Common/Diary.cpp \
         Common/Entry.cpp \
@@ -47,7 +46,6 @@ HEADERS += \
     Business/DiaryManager.h \
     Business/EntryManager.h \
     Business/IBusiness.h \
-    Business/MoodTrackManager.h \
     Business/UserManager.h \
     Common/Diary.h \
     Common/Entry.h \

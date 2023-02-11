@@ -55,7 +55,7 @@ font-size: 19px;</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>130</y>
+      <y>170</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -65,22 +65,6 @@ font-size: 19px;</string>
     </property>
     <property name="text">
      <string>Create new Entry</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>300</y>
-      <width>231</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/Images/Images/white.png);</string>
-    </property>
-    <property name="text">
-     <string>Track your Mood</string>
     </property>
    </widget>
    <widget class="QPushButton" name="DeleteDiaryButton">
@@ -157,8 +141,8 @@ font: 57 19pt &quot;aakar&quot;;</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>538</x>
-      <y>214</y>
+      <x>540</x>
+      <y>280</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -217,19 +201,6 @@ font: 57 18pt &quot;aakar&quot;;</string>
     <property name="title">
      <string>CurrentDiary</string>
     </property>
-    <widget class="QMenu" name="menuFilter_entries_after_topic">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="title">
-      <string>Filter entries by topic</string>
-     </property>
-     <addaction name="actionTopic1"/>
-     <addaction name="actionTopic2"/>
-     <addaction name="actionTopic3"/>
-    </widget>
-    <addaction name="menuFilter_entries_after_topic"/>
-    <addaction name="actionFilter_entries_after_date"/>
    </widget>
    <widget class="QMenu" name="menuLog_out">
     <property name="styleSheet">

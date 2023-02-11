@@ -24,25 +24,18 @@ MainWindow::MainWindow(Business::IBusiness* b, QMap<int, Common::Diary> myDiaryM
 
     ui->setupUi(this);
 
-    ui->menuLog_out->setTitle("Welcome " + m_business->getCurrentUser().getUserName());
+    filterInput = new QLineEdit();
 
     if (m_myDiaryMap.empty()){
                 createDiary();
+                ui->menuMy_diary->menuAction()->setVisible(false);
     }else {
         ui->comboBox_ChangeDiary->addItems(getDiaryNameList());
         m_currentDiary = ui->comboBox_ChangeDiary->currentText();
     }
 
-    /*hide filtermenu if no first diary has been created
-    (create diary dialog got closed with button 'cancel')*/
-    if (m_myDiaryMap.empty()){
-        ui->menuMy_diary->menuAction()->setVisible(false);
-    }
-
-    // Einträge aus dem currentDiary anzeigen lassen
-
-    
-    ui->menuMy_diary->setTitle("Filter " + m_currentDiary);
+    ui->menuLog_out->setTitle("Welcome " + m_business->getCurrentUser().getUserName());
+    ui->menuMy_diary->setTitle("Current diary: " + m_currentDiary);
 
     QObject::connect(ui->actionLog_out_2,&QAction::triggered,this,&MainWindow::showLoginView);
 
@@ -60,20 +53,9 @@ MainWindow::MainWindow(Business::IBusiness* b, QMap<int, Common::Diary> myDiaryM
 
     QObject::connect(ui->pastEntriesListWidget, &QListWidget::itemDoubleClicked, this, &MainWindow::openEntryView); // when double clicked on an entry in past entries
 
-    filterInput = new QLineEdit();
-
-    displayEntries();
-
-    // Filter Functions
-
-//    if (!QObject::connect(ui->filterInput, &QLineEdit::returnPressed, this, &MainWindow::displayEntries)) {
-//        qDebug() << "Connection failed!";
-//    } else {
-//        qDebug() << "Connection succeeded!";
-//    }
-
     QObject::connect(ui->filterButton, &QPushButton::clicked, this, &MainWindow::displayFilteredEntries);
 
+    displayEntries();
 }
 
 MainWindow::~MainWindow(){
@@ -206,8 +188,6 @@ void MainWindow::changeDiary(){
     //get diary name from comboBox
     m_currentDiary = ui->comboBox_ChangeDiary->currentText();
 
-    /***TODO: angezeigte Einträge in mainView aktualisieren mit Einträgen von newCurrentDiary***/
-
     //name of new current Diary is used as title for filtermenu
     ui->menuMy_diary->setTitle("Filter " + m_currentDiary);
     displayEntries();
@@ -289,7 +269,6 @@ void MainWindow::deleteDiary(){
 }
 
 void MainWindow::openEntryView() {
-
 
     //get the current entry from the list widget
     QListWidgetItem* item = ui->pastEntriesListWidget->currentItem();

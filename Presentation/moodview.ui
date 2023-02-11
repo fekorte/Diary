@@ -64,14 +64,14 @@
   <widget class="QPushButton" name="sadMood">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>110</y>
+     <x>170</x>
+     <y>240</y>
      <width>89</width>
      <height>91</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:#EAF2F8</string>
+    <string notr="true">background-color:#BEE3E5</string>
    </property>
    <property name="text">
     <string>Sad</string>
@@ -81,7 +81,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>250</y>
+     <y>240</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -96,8 +96,8 @@
   <widget class="QPushButton" name="balancedMood">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>250</y>
+     <x>290</x>
+     <y>240</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -112,8 +112,8 @@
   <widget class="QPushButton" name="satisfiedMood">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>250</y>
+     <x>410</x>
+     <y>240</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -128,8 +128,8 @@
   <widget class="QPushButton" name="joyfulMood">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>250</y>
+     <x>50</x>
+     <y>380</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -144,8 +144,8 @@
   <widget class="QPushButton" name="excitedMood">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>390</y>
+     <x>170</x>
+     <y>380</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -160,8 +160,8 @@
   <widget class="QPushButton" name="ecstaticMood">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>390</y>
+     <x>290</x>
+     <y>380</y>
      <width>89</width>
      <height>91</height>
     </rect>
@@ -176,27 +176,33 @@
   <widget class="QPushButton" name="wideAwakeMood">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>390</y>
+     <x>410</x>
+     <y>380</y>
      <width>89</width>
      <height>91</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white;</string>
    </property>
    <property name="text">
     <string>Wide Awake</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_12">
+  <widget class="QPushButton" name="nervousMood">
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>390</y>
+     <y>110</y>
      <width>89</width>
      <height>91</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #F3CE7F</string>
+   </property>
    <property name="text">
-    <string>Add New</string>
+    <string>Nervous</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

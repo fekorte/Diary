@@ -8,7 +8,6 @@
 #include "EntryManager.h"
 #include "ExerciseManager.h"
 #include "UserManager.h"
-#include "MoodTrackManager.h"
 #include <QMap>
 #include <QString>
 
@@ -24,7 +23,6 @@ private:
     DiaryManager m_diaryManager;
     EntryManager m_entryManager;
     UserManager m_userManager;
-    MoodTrackManager m_moodTrackManager;
 
 public:
 
@@ -43,8 +41,6 @@ public:
     const QString saveEntry(Common::Entry& entry) override;
 
     void deleteEntry(Common::Entry entryID) override;
-
-    // const Common::Entry& loadEntry(int diaryID, int entryID);
 
     bool createDiary(QString diaryName, int userID) override;
 

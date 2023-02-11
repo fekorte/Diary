@@ -1,10 +1,18 @@
 #include "moodview.h"
 #include "ui_moodview.h"
 
+/**
+ * The code represents the GUI for mood selection.
+ *
+ * The button description represents the Mood, which will be send back to entry view and stored as the mood value.
+ *
+ * @author Chachulski, Korte, Mathea
+ */
+
 MoodView::MoodView(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::MoodView)
-{
+    ui(new Ui::MoodView){
+
     ui->setupUi(this);
     angryMood = new QPushButton();
     anxiousMood =new QPushButton();
@@ -17,11 +25,8 @@ MoodView::MoodView(QWidget *parent) :
     excitedMood = new QPushButton();
     ecstaticMood = new QPushButton();
     wideAwakeMood = new QPushButton();
+    nervousMood = new QPushButton();
 
-//    connect(angryMood, &QPushButton::clicked, [this] {
-//        emit buttonDescription(angryMood->text());
-//        this->close();
-//    });
 
     QList<QPushButton*> buttons = this->findChildren<QPushButton*>();
     for (QPushButton* button : buttons) {
@@ -30,12 +35,10 @@ MoodView::MoodView(QWidget *parent) :
             this->close();
         });
     }
-
-
 }
 
-MoodView::~MoodView()
-{
+MoodView::~MoodView(){
+
     delete ui;
 }
 

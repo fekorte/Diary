@@ -107,8 +107,6 @@ namespace Business {
             m_diaryMap->insert(diary.getDiaryID(), diary);
         }
 
-        //TODO: braucht es hier eine Fehlerbehandlung, oder reicht die in der Persistenz?
-
         m_persistence->writeDiaries(*m_diaryMap);
 
         return 1;

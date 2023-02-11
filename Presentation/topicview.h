@@ -5,6 +5,8 @@
 #include <QStringList>
 #include <QListWidget>
 #include <QScrollArea>
+#include <QPlainTextEdit>
+#include <QPushButton>
 #include "Business/IBusiness.h"
 
 /*
@@ -13,11 +15,12 @@
 
 
 namespace Ui {
+
 class TopicView;
 }
 
-class TopicView : public QWidget
-{
+class TopicView : public QWidget{
+
     Q_OBJECT
 
 public:
@@ -28,6 +31,10 @@ public:
     QStringList loadTopicList();
     void setSelectedTopics(const QStringList &topics);
     void saveSelectedTopics();
+    void updateTopicList();
+    void addANewTopic();
+    void clearSelectedTopics();
+    void filterTopics();
 
 private:
     Ui::TopicView *ui;
@@ -37,14 +44,13 @@ private:
     QListWidget* topicListSelectedWidget;
     QScrollArea* scrollArea;
     QScrollArea* scrollArea_2;
-
-
+    QPushButton* addNewTopic;
+    QPushButton* searchTopicButton;
+    QPlainTextEdit* addTopicText;
+    QPlainTextEdit* searchTopicText;
 
 signals:
     void selectedTopicsChanged(const QStringList &topics);
-
 };
-
-
 
 #endif // TOPICVIEW_H

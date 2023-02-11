@@ -10,11 +10,12 @@
 
 
 namespace Ui {
+
 class MoodView;
 }
 
-class MoodView : public QWidget
-{
+class MoodView : public QWidget{
+
     Q_OBJECT
 
 public:
@@ -34,14 +35,11 @@ private:
     QPushButton* excitedMood;
     QPushButton* ecstaticMood;
     QPushButton* wideAwakeMood;
+    QPushButton* nervousMood;
 
 
 signals:
     void buttonDescription(const QString &description);
-
 };
-
-
-
 
 #endif // MOODVIEW_H

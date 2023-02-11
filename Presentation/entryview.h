@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTextEdit>
 #include <QScrollArea>
+#include <QTableWidget>
 #include "Business/IBusiness.h"
 #include "Common/Entry.h"
 #include "topicview.h"
@@ -15,15 +16,15 @@
 
 
 namespace Ui {
+
 class EntryView;
 }
 
-class EntryView : public QWidget
-{
+class EntryView : public QWidget{
+
     Q_OBJECT
 
 public:
-
     explicit EntryView(Business::IBusiness* b, QString currentDiary, QWidget* parent = nullptr);
     explicit EntryView(Business::IBusiness* b, QString currentDiary, Common::Entry entry, QWidget* parent = nullptr);
 
@@ -34,7 +35,7 @@ public slots:
     void onButtonDescription(const QString &description);
 
 protected:
-    void closeEvent(QCloseEvent *event) override;
+    //void closeEvent(QCloseEvent *event) override;
     void saveCurrentEntry();
     void deleteEntry(Common::Entry entryID);
     void clearEntry();
@@ -42,12 +43,10 @@ protected:
     void updateEntry(Common::Entry entry);
     void addTopic();
     void addMood();
-    //void setSelectedTopic(const QStringList &topic);
-    void noNewTopicForOldTopics();
-    void noNewMoodsForOldEntries();
     void setNonClosable();
     void on_suggestionBoxExec(const QString& mood);
-
+    void loadMoodsFromLast7Days(QString m_currentDiary);
+    void showMainWindow();
 
 private:
     Ui::EntryView* ui;
@@ -55,6 +54,7 @@ private:
     QString m_currentDiary;
     QTextEdit* entryEdit;
     QScrollArea* scrollArea;
+    QScrollArea* scrollArea_2;
     Common::Entry m_entry;
     Common::User currentUser;
     int currentUserID;
@@ -62,12 +62,12 @@ private:
     QString mood;
     TopicView *m_topicView;
     MoodView *m_moodView;
-
+    QTableWidget* moodTableWidget;
 
     void showExerciseView(QString mood);
 
+private slots:
+    void goBack();
 };
-
-
 
 #endif // ENTRYVIEW_H
