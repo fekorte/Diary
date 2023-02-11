@@ -257,7 +257,7 @@ void EntryView::onButtonDescription(const QString &description){
 
 void EntryView::loadMoodsFromLast7Days(const QString& m_currentDiary)
 {
-    Common::Diary currentDiary = m_b->getDiary(m_currentDiary);
+    Common::Diary currentDiary = m_b->getDiary(m_currentDiary, m_b->getCurrentUser().getUserId());
 
     QDateTime currentDateTime = QDateTime::currentDateTime();
     QDateTime sevenDaysAgo = currentDateTime.addDays(-7);
@@ -347,7 +347,7 @@ void EntryView::loadMoodsFromLast7Days(const QString& m_currentDiary)
 
 void EntryView::showMainWindow(){
 
-    MainWindow *goBack = new MainWindow(m_b,m_b->getUserDiaryMap(m_b->getCurrentUser().getUserId()));
+    MainWindow *goBack = new MainWindow(m_b, m_b->getUserDiaryMap(m_b->getCurrentUser().getUserId()));
     this->close();
     goBack->show();
 }

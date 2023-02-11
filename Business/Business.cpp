@@ -39,7 +39,7 @@ namespace Business {
 
      void Business::deleteCurrentUser(){
 
-        QMap<int, Common::Diary> userDiaryMap = m_diaryManager.getUserDiaryMap(m_userManager.getCurrentUser().getUserId());
+        QMap<QString, Common::Diary> userDiaryMap = m_diaryManager.getUserDiaryMap(m_userManager.getCurrentUser().getUserId());
         for(const Common::Diary& diary : userDiaryMap){
             m_diaryManager.deleteDiary(diary.getDiaryName());
         }
@@ -62,12 +62,12 @@ namespace Business {
          return m_diaryManager.deleteDiary(diaryName);
      }
 
-     const Common::Diary Business::getDiary(const QString& diaryName){
+     const Common::Diary Business::getDiary(const QString& diaryName, int userId){
 
-         return m_diaryManager.getDiary(diaryName);
+         return m_diaryManager.getCurrentDiary(diaryName, userId);
      }
 
-     const QMap<int, Common::Diary>& Business::getUserDiaryMap(int userID){
+     const QMap<QString, Common::Diary>& Business::getUserDiaryMap(int userID){
 
          return m_diaryManager.getUserDiaryMap(userID);
      }

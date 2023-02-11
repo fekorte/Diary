@@ -46,9 +46,9 @@ public:
 
     bool deleteDiary(const QString& diaryName) override;
 
-    const Common::Diary getDiary(const QString&) override;
+    const Common::Diary getDiary(const QString& diaryName, int userId) override;
 
-    const QMap<int, Common::Diary>& getUserDiaryMap(int userID) override;
+    const QMap<QString, Common::Diary>& getUserDiaryMap(int userID) override;
 
     int getNextPage(const QString& m_currentDiary, int currentUserID) override;
 

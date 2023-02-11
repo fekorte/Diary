@@ -21,7 +21,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(Business::IBusiness* b, const QMap<int, Common::Diary>& myDiaryMap, QWidget *parent = nullptr);
+    explicit MainWindow(Business::IBusiness* b, const QMap<QString, Common::Diary>& myDiaryMap, QWidget *parent = nullptr);
     ~MainWindow();
 
 protected:
@@ -43,7 +43,7 @@ private:
     Ui::MainWindow* ui;
     Business::IBusiness* m_business;
     QString m_currentDiary;
-    QMap<int, Common::Diary> m_myDiaryMap;
+    QMap<QString, Common::Diary> m_myDiaryMap;
 
     QListWidget* pastEntriesListWidget;
 

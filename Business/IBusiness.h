@@ -23,9 +23,9 @@ public:
     virtual void deleteCurrentUser() = 0;
     virtual const Common::User& getCurrentUser() = 0;
     virtual bool createDiary(const QString& diaryName, int userID) = 0;
-    virtual const QMap<int, Common::Diary>& getUserDiaryMap(int userID) = 0;
+    virtual const QMap<QString, Common::Diary>& getUserDiaryMap(int userID) = 0;
     virtual bool deleteDiary(const QString& diaryName) = 0;
-    virtual const Common::Diary getDiary(const QString&) = 0;
+    virtual const Common::Diary getDiary(const QString& diaryName, int userId) = 0;
     virtual const QString saveEntry(const Common::Entry& entry) = 0;
     virtual void deleteEntry(const Common::Entry& entryID)=0;
     virtual int getNextPage(const QString& currentDiary,int currentUserID)=0;

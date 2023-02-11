@@ -45,7 +45,7 @@ void LoginView::login(){
 
     try{
         if(m_b->login(userName, password)){
-            QMap<int, Common::Diary> myDiaryMap = m_b->getUserDiaryMap(m_b->getCurrentUser().getUserId());
+            QMap<QString, Common::Diary> myDiaryMap = m_b->getUserDiaryMap(m_b->getCurrentUser().getUserId());
             MainWindow* mView = new MainWindow(m_b, myDiaryMap);
             this->close();
             mView->show();

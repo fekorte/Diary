@@ -7,10 +7,11 @@
  * Intermediates between persistence layer and presentation layer via the business interface IBusiness.
  *
  * QMap<int, Common::Diary>* m_diary
- * and
- * QMap<int, Common::Diary>* m_userDiaryMap:
- *
  * key = diaryID, value = Diary
+ *
+ * QMap<int, Common::Diary>* m_userDiaryMap:
+ * key = diary name, value = Diary
+ *
  *
  * @author Chachulski, Korte, Mathea
  *
@@ -20,7 +21,7 @@ namespace Business {
 
     DiaryManager::DiaryManager(){  
         m_diaryMap = new QMap<int, Common::Diary>;
-        m_userDiaryMap = new QMap<int, Common::Diary>;
+        m_userDiaryMap = new QMap<QString, Common::Diary>;
         m_persistence = new Persistence::FilePersistence();
     }
 
@@ -33,31 +34,11 @@ namespace Business {
         m_userDiaryMap = nullptr;
     }
 
-    const Common::Diary DiaryManager::getDiary(const QString& diaryName) {
-        updateDiaryMap();
+    const Common::Diary DiaryManager::getCurrentDiary(const QString& diaryName, int userId) {
 
-        Common::Diary specificDiaryPtr;
-        for(Common::Diary diary : m_userDiaryMap->values()){
-            if (diary.getDiaryName() == diaryName)
-            specificDiaryPtr = diary;
-        }
-        return specificDiaryPtr;
+        updateUserDiaryMap(userId);
+        return m_userDiaryMap->value(diaryName);
     }
-
-
-    // --- Laura Chachulski: the following are needed for new entries to be written into a diary, that is  again updated in the diary map
-
-    const Common::Diary& DiaryManager::getCurrentDiary(const QString& diaryName, int userID) {
-
-        getUserDiaryMap(userID);
-
-        for(Common::Diary& diary : *m_userDiaryMap){
-            if (diary.getDiaryName() == diaryName)
-                return diary;
-        }
-        throw std::out_of_range("Diary not found");
-    }
-
 
     QMap<int, Common::Diary> DiaryManager::updateDiariesMap_withNewEntries(const Common::Diary& currentDiary) {
 
@@ -65,7 +46,6 @@ namespace Business {
             if (diary.getDiaryName() == currentDiary.getDiaryName()){
                 diary = currentDiary;
             }
-
         }
 
         return *m_diaryMap;
@@ -77,30 +57,23 @@ namespace Business {
 
     bool DiaryManager::processCreateDiary(const QString& diaryName, int userID){
 
-        /* check if Diary already exists*/
-        for (Common::Diary diary : m_userDiaryMap->values()){
-            if (diary.getDiaryName() == diaryName){
-                    return 0;
-            }
+        if(m_userDiaryMap->contains(diaryName)){ /* check if Diary already exists*/
+            return 0;
         }
 
         int id = m_diaryMap->empty() ? 1 : m_diaryMap->last().getDiaryID()+1; //generate diaryID according to m_diaryMap (map with all diaries)
         QMap<int, Common::Entry> emptyEntryList;
         Common::Diary newDiary(emptyEntryList, id, diaryName, userID);
 
-        m_userDiaryMap->insert(newDiary.getDiaryID(), newDiary);
+        m_userDiaryMap->insert(newDiary.getDiaryName(), newDiary);
 
-        if(! m_diaryMap->isEmpty()){
-
+        if(!m_diaryMap->isEmpty()){
             for (Common::Diary diary : m_diaryMap->values()){
                 if (diary.getUserID() == userID)
                     m_diaryMap->remove(diary.getDiaryID());
             }
         }
 
-
-        //outcommented line because my (Felina Korte) qt version 5 does not support it, for each loop as a temporary work-around
-        //m_diaryMap->insert(*m_userDiaryMap);
         for(Common::Diary diary : *m_userDiaryMap){
             m_diaryMap->insert(diary.getDiaryID(), diary);
         }
@@ -110,13 +83,19 @@ namespace Business {
         return 1;
     }
 
+    int DiaryManager::getDiaryId(const QString& diaryName){
+
+        if(m_userDiaryMap->contains(diaryName)){
+            return m_userDiaryMap->value(diaryName).getDiaryID();
+        }
+        return 0; //zero is no diary id and can therefore be used to signal that diary is non existent
+    }
+
     bool DiaryManager::deleteDiary(const QString& diaryName){
-        for (Common::Diary diary: m_diaryMap->values()){
-            if (diary.getDiaryName() == diaryName){
-                m_diaryMap->remove(diary.getDiaryID());
-                m_persistence->writeDiaries(*m_diaryMap);
-                return true;
-            }
+
+        if(getDiaryId(diaryName) != 0){
+            m_diaryMap->remove(getDiaryId(diaryName));
+            return true;
         }
         return false;
     }
@@ -130,12 +109,12 @@ namespace Business {
         updateDiaryMap();
         for(Common::Diary diary : m_diaryMap->values()){
             if (diary.getUserID() == currentUserID){
-                m_userDiaryMap->insert(diary.getDiaryID(), diary);
+                m_userDiaryMap->insert(diary.getDiaryName(), diary);
             }
         }
     }
 
-    const QMap<int, Common::Diary>& DiaryManager::getUserDiaryMap(int userID){
+    const QMap<QString, Common::Diary>& DiaryManager::getUserDiaryMap(int userID){
         updateUserDiaryMap(userID);
         return *m_userDiaryMap;
     }
