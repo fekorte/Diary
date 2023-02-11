@@ -17,14 +17,14 @@ class UserManager{
 
 private:
     Persistence::IPersistence* m_filePersistence;
-    Common::User* m_currentUser;
+    Common::User m_currentUser;
 
 public:
 
     UserManager();
     ~UserManager();
 
-    bool processLogin(const QString& userName, const QString& password) const;
+    bool processLogin(const QString& userName, const QString& password);
 
     bool processRegister(const QString& email, const QString& userName, const QString& password);
 

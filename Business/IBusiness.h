@@ -18,7 +18,7 @@ class IBusiness{
 
 public:
     virtual ~IBusiness(){}
-    virtual bool login(const QString& userName, const QString& password) const = 0;
+    virtual bool login(const QString& userName, const QString& password) = 0;
     virtual bool registerUser(const QString& email, const QString& userName, const QString& password) = 0;
     virtual void deleteCurrentUser() = 0;
     virtual const Common::User& getCurrentUser() = 0;

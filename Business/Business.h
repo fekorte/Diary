@@ -32,7 +32,7 @@ public:
 
     ~Business();
 
-    bool login(const QString& userName, const QString& password) const override;
+    bool login(const QString& userName, const QString& password) override;
 
     bool registerUser(const QString& email, const QString& userName, const QString& password) override;
 

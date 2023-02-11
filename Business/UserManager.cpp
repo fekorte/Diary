@@ -17,21 +17,18 @@
 
 namespace Business{
 
-    UserManager::UserManager(){
+    UserManager::UserManager(){    
         m_filePersistence = new Persistence::FilePersistence();
-        m_currentUser = new Common::User();
 
     }
 
     UserManager::~UserManager(){
         delete m_filePersistence;
         m_filePersistence = nullptr;
-        delete m_currentUser;
-        m_currentUser = nullptr;
     }
 
 
-    bool UserManager::processLogin(const QString& userName, const QString& password) const{
+    bool UserManager::processLogin(const QString& userName, const QString& password){
         if(getCurrentUserMap().empty()){
             throw std::invalid_argument("Login failed. Please register first.");
         }
@@ -39,8 +36,8 @@ namespace Business{
         QMap<int, Common::User> userMap = getCurrentUserMap();
         for (auto it = userMap.begin(); it != userMap.end(); ++it){
             if(it->getUserName() == userName && it->getPassword() == password){
-                *m_currentUser = it.value();
-                 return true;
+                m_currentUser = it.value();
+                return true;
             }
         }
         throw std::invalid_argument("Login failed. User name or password wrong. Please try again.");
@@ -78,16 +75,15 @@ namespace Business{
 
    void UserManager::deleteCurrentUser(){
        QMap<int, Common::User> userList = getCurrentUserMap();
-       userList.remove(m_currentUser->getUserId());
+       userList.remove(m_currentUser.getUserId());
        m_filePersistence->writeUserMapToFile(userList);
    }
 
    const Common::User& UserManager::getCurrentUser(){
-       return *m_currentUser;
+       return m_currentUser;
    }
 
     QMap<int, Common::User> UserManager::getCurrentUserMap() const{
         return m_filePersistence->readUserMapFromFile();
     }
-
 }

@@ -25,7 +25,7 @@ namespace Business {
     }
     Business::~Business(){}
 
-    bool Business::login(const QString& userName,const QString& password) const{
+    bool Business::login(const QString& userName,const QString& password){
 
          return m_userManager.processLogin(userName, password);
 
