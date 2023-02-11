@@ -31,7 +31,7 @@
  */
 
 //constructor if create travel entry button has been clicked (new entry will be created)
-TravelView::TravelView(Business::IBusiness* b, QString currentDiary, QWidget *parent) :
+TravelView::TravelView(Business::IBusiness* b, const QString& currentDiary, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TravelView), m_b(b), m_currentDiary(currentDiary){
 
@@ -49,23 +49,15 @@ TravelView::TravelView(Business::IBusiness* b, QString currentDiary, QWidget *pa
 
 
 //this constructor loads an existing (travel) entry and displays its information
-TravelView::TravelView(Business::IBusiness* b, QString currentDiary, Common::Entry entry, QWidget *parent) :
+TravelView::TravelView(Business::IBusiness* b, const QString& currentDiary, const Common::Entry& entry, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TravelView), m_b(b), m_currentDiary(currentDiary){
+    ui(new Ui::TravelView), m_b(b), m_currentDiary(currentDiary), m_mood(entry.getMood()),
+    m_place(entry.getPlace()), m_pathToImg(entry.getPathToImgFile()), m_pathToMap(entry.getPathToMapFile()), m_date(entry.getDate()), m_note(entry.getMyNote()){
 
     initialize();
 
     QObject::connect(ui->pushButton,&QPushButton::clicked,[this, entry](){ this->updateEntry(entry); }); //save button leads to updateEntry()
     QObject::connect(ui->pushButton_9, &QPushButton::clicked, [this, entry](){ this->deleteEntry(entry); });
-
-
-
-    m_mood = entry.getMood();
-    m_place = entry.getPlace();
-    m_pathToImg = entry.getPathToImgFile();
-    m_pathToMap = entry.getPathToMapFile();
-    m_date = entry.getDate();
-    m_note = entry.getMyNote();
 
     ui->label_4->setText("Travel place: " + entry.getPlace());
     ui->label_3->setText("Date: " + entry.getDate());

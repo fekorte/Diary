@@ -38,26 +38,37 @@ namespace Business {
    }
 
      void Business::deleteCurrentUser(){
-         m_userManager.deleteCurrentUser();
+
+        QMap<int, Common::Diary> userDiaryMap = m_diaryManager.getUserDiaryMap(m_userManager.getCurrentUser().getUserId());
+        for(const Common::Diary& diary : userDiaryMap){
+            m_diaryManager.deleteDiary(diary.getDiaryName());
+        }
+        m_userManager.deleteCurrentUser();
+
      }
 
      const Common::User& Business::getCurrentUser(){
+
          return m_userManager.getCurrentUser();
      }
 
      bool Business::createDiary(QString diaryName, int userID){
+
         return m_diaryManager.processCreateDiary(diaryName, userID);
      }
 
      bool Business::deleteDiary(QString diaryName) {
+
          return m_diaryManager.deleteDiary(diaryName);
      }
 
      const Common::Diary Business::getDiary(const QString& diaryName){
+
          return m_diaryManager.getDiary(diaryName);
      }
 
      const QMap<int, Common::Diary>& Business::getUserDiaryMap(int userID){
+
          return m_diaryManager.getUserDiaryMap(userID);
      }
 
@@ -68,30 +79,37 @@ namespace Business {
     }
 
     void Business::deleteEntry(Common::Entry entry){
+
         m_entryManager.deleteEntry(entry);
     }
 
     int Business::getNextPage(QString m_currentDiary, int currentUserID){
+
         return m_entryManager.getNextPage(m_currentDiary, currentUserID);
     }
 
     const Common::Entry Business::loadEntry(QString diaryName,int m_currentUserID, int diaryPage){
+
         return m_entryManager.loadEntry(diaryName,m_currentUserID, diaryPage);
     }
 
     void Business::writeTopics(QStringList topicList){
+
         m_entryManager.writeTopics(topicList);
     }
 
     const QStringList Business::loadTopicList(){
+
         return m_entryManager.loadTopicList();
     }
 
     const QString Business::travelContinentChoice(const QString& decision, const QStringList& continents){
+
         return m_entryManager.travelContinentChoice(decision, continents);
     }
 
     void Business::deleteImageFile(const QString& filePath){
+
         m_entryManager.deleteImageFile(filePath);
     }
 

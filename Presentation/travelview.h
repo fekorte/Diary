@@ -24,8 +24,8 @@ class TravelView : public QWidget{
     Q_OBJECT
 
 public:
-    explicit TravelView(Business::IBusiness* b, QString currentDiary, QWidget *parent = nullptr);
-    explicit TravelView(Business::IBusiness* b, QString currentDiary, Common::Entry entry, QWidget *parent = nullptr);
+    explicit TravelView(Business::IBusiness* b, const QString& currentDiary, QWidget *parent = nullptr);
+    explicit TravelView(Business::IBusiness* b, const QString& currentDiary, const Common::Entry& entry, QWidget *parent = nullptr);
     ~TravelView();
 
 protected:
