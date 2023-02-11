@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1057</width>
+    <height>808</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>My Diary</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Images/Images/drawnNotebook.jpg);
+font: 57 19pt &quot;aakar&quot;;
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <widget class="QListWidget" name="pastEntriesListWidget">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>200</y>
+      <width>261</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>aakar</family>
+      <pointsize>-1</pointsize>
+      <weight>7</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);
+font-size: 19px;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createNewEntryButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>130</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);</string>
+    </property>
+    <property name="text">
+     <string>Create new Entry</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>300</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);</string>
+    </property>
+    <property name="text">
+     <string>Track your Mood</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="DeleteDiaryButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>490</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);
+font: 57 19pt &quot;aakar&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Delete this Diary</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createDiaryButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>390</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>aakar</family>
+      <pointsize>19</pointsize>
+      <weight>7</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);</string>
+    </property>
+    <property name="text">
+     <string>Create new Diary</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_ChangeDiary">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>10</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ChangeDiaryButton">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>0</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Change Diary</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>538</x>
+      <y>214</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create Travel Entry</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="filterInput">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>140</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="filterButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>140</y>
+      <width>89</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Topic</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>30</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1057</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/Images/Images/white.png);
+font: 57 24pt &quot;aakar&quot;;
+color: black;
+</string>
+   </property>
+   <widget class="QMenu" name="menuMy_diary">
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/Images/Images/white.png);
+font: 57 18pt &quot;aakar&quot;;</string>
+    </property>
+    <property name="title">
+     <string>CurrentDiary</string>
+    </property>
+    <widget class="QMenu" name="menuFilter_entries_after_topic">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="title">
+      <string>Filter entries by topic</string>
+     </property>
+     <addaction name="actionTopic1"/>
+     <addaction name="actionTopic2"/>
+     <addaction name="actionTopic3"/>
+    </widget>
+    <addaction name="menuFilter_entries_after_topic"/>
+    <addaction name="actionFilter_entries_after_date"/>
+   </widget>
+   <widget class="QMenu" name="menuLog_out">
+    <property name="styleSheet">
+     <string notr="true">font: 57 18pt &quot;aakar&quot;;</string>
+    </property>
+    <property name="title">
+     <string>Welcome User</string>
+    </property>
+    <addaction name="actionLog_out_2"/>
+    <addaction name="actionDelete_account_2"/>
+   </widget>
+   <addaction name="menuLog_out"/>
+   <addaction name="menuMy_diary"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionDiary1">
+   <property name="text">
+    <string>Diary1</string>
+   </property>
+  </action>
+  <action name="actionDiary2">
+   <property name="text">
+    <string>Diary2</string>
+   </property>
+  </action>
+  <action name="actionDiary3">
+   <property name="text">
+    <string>Diary3</string>
+   </property>
+  </action>
+  <action name="actionFilter_entries_alphabetically">
+   <property name="text">
+    <string>Filter entries alphabetically</string>
+   </property>
+  </action>
+  <action name="actionTopic1">
+   <property name="text">
+    <string>Topic1</string>
+   </property>
+  </action>
+  <action name="actionTopic2">
+   <property name="text">
+    <string>Topic2</string>
+   </property>
+  </action>
+  <action name="actionTopic3">
+   <property name="text">
+    <string>Topic3</string>
+   </property>
+  </action>
+  <action name="actionLog_out">
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </action>
+  <action name="actionLog_out_2">
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </action>
+  <action name="actionFilter_entries_after_date">
+   <property name="text">
+    <string>Filter entries by date</string>
+   </property>
+  </action>
+  <action name="actionFilter_entries_after_entry_type">
+   <property name="text">
+    <string>Filter entries by entry type</string>
+   </property>
+  </action>
+  <action name="actionChange_user_name">
+   <property name="text">
+    <string>Change user name</string>
+   </property>
+  </action>
+  <action name="actionChange_password">
+   <property name="text">
+    <string>Change password</string>
+   </property>
+  </action>
+  <action name="actionDelete_account">
+   <property name="text">
+    <string>Delete account</string>
+   </property>
+  </action>
+  <action name="actionfilter_after_topic">
+   <property name="text">
+    <string>filter after topic</string>
+   </property>
+  </action>
+  <action name="actionDelete_account_2">
+   <property name="text">
+    <string>Delete account</string>
+   </property>
+  </action>
+  <action name="actionCreate_travel_diary">
+   <property name="text">
+    <string>Create travel diary</string>
+   </property>
+  </action>
+  <action name="actionCreate_basic_diary">
+   <property name="text">
+    <string>Create standard diary</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

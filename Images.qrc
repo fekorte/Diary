@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Images/desk.jpg</file>
+        <file>Images/white.png</file>
+        <file>Images/drawnNotebook.jpg</file>
+        <file>Images/page.jpg</file>
+        <file>Images/europe.jpg</file>
+        <file>Images/africa.jpg</file>
+        <file>Images/asia.jpg</file>
+        <file>Images/northAmerica.jpg</file>
+        <file>Images/southAmerica.jpg</file>
+        <file>Images/australia.jpg</file>
+    </qresource>
+</RCC>

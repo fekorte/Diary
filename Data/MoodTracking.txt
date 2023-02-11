@@ -1,0 +1,17 @@
+DailyMeow, 4, -6, 11, 0.35, 1
+DailyMeow, 5, 2, 19, 0.3, 1
+DailyMeow, 6, 1, 0, 0, 0
+DailyMeow, 7, -1, 19, 0.31, 0
+DailyMeow, 8, 1, 19, 0.31, 0
+DailyMeow, 9, 2, 20, 0.32, 0
+DailyMeow, 10, -2, 20, 0.32, 0
+DailyMeow, 11, -1, 20, 0.32, 0
+1414, 1, 3, 18, 0.33, 0
+1414, 2, 3, 18, 0.33, 0
+YetAnother, 0, 0, 0, 0, 0
+1414, 3, -4, 17, 0.34, 1
+DailyMeow, 2, 0, 17, 0.34, 1
+DailyMeow, 3, -5, 17, 0.34, 1
+DailyMeow, 4, -1, 17, 0.34, 1
+DailyMeow, 5, -4, 17, 0.34, 1
+NightlyMeow, 1, -5, 0, 0, 0
