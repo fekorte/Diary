@@ -190,7 +190,7 @@ void MainWindow::changeDiary(){
     m_currentDiary = ui->comboBox_ChangeDiary->currentText();
 
     //name of new current Diary is used as title for filtermenu
-    ui->menuMy_diary->setTitle("Filter " + m_currentDiary);
+    ui->menuMy_diary->setTitle("Current Diary: " + m_currentDiary);
     displayEntries();
 }
 
@@ -223,7 +223,7 @@ void MainWindow::createDiary(){
         ui->menuMy_diary->menuAction()->setVisible(true);
 
         //name of new current Diary is used as title for filtermenu
-        ui->menuMy_diary->setTitle("Filter " + text);
+        ui->menuMy_diary->setTitle("Current diary: " + text);
 
         //add the new diary to the selectBox
         ui->comboBox_ChangeDiary->addItem(text);

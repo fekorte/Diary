@@ -55,7 +55,7 @@ font-size: 19px;</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>170</y>
+      <y>140</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -88,7 +88,7 @@ font: 57 19pt &quot;aakar&quot;;</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>390</y>
+      <y>370</y>
       <width>231</width>
       <height>51</height>
      </rect>
@@ -142,7 +142,7 @@ font: 57 19pt &quot;aakar&quot;;</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>280</y>
+      <y>250</y>
       <width>231</width>
       <height>51</height>
      </rect>
