@@ -266,6 +266,8 @@ void MainWindow::deleteDiary(){
     }else{
          ui->menuMy_diary->setTitle("Filter " + m_currentDiary);
     }
+
+    displayEntries();
 }
 
 void MainWindow::openEntryView() {

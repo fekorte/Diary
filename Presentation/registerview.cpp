@@ -16,10 +16,7 @@ RegisterView::RegisterView(Business::IBusiness* b, QWidget* parent) :
     ui(new Ui::RegisterView), m_b(b){
     ui->setupUi(this);
 
-    //if button "submit" is being clicked
     QObject::connect(ui->commandLinkButton,&QCommandLinkButton::clicked,this,&RegisterView::registerNewUser);
-
-    //if button "login" is being clicked
     QObject::connect(ui->commandLinkButton_2,&QCommandLinkButton::clicked,this,&RegisterView::showLoginView);
 }
 
@@ -45,17 +42,13 @@ void RegisterView::registerNewUser(){
 
     try{
         if(m_b->registerUser(email,userName,password)){
-            msg.setText("Successful registration.");
-            msg.setWindowTitle("Registration");
-            msg.exec();
+            QMessageBox::information(nullptr,"Registration", "Successful registration");
             this->close();
             LoginView* lView = new LoginView(m_b);
             lView->show();
         }
     } catch(std::exception& e) {
-        msg.setText(e.what());
-        msg.setWindowTitle("Registration failed.");
-        msg.exec();
+        QMessageBox::warning(nullptr,"Registration failed", e.what());
     }
 }
 

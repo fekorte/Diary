@@ -22,10 +22,7 @@ LoginView::LoginView(Business::IBusiness* b, QWidget* parent) :
 
     ui->setupUi(this);
 
-    //if button "submit" is being clicked
     QObject::connect(ui->commandLinkButton_2,&QCommandLinkButton::clicked,this,&LoginView::login);
-
-    //if button "register" is being clicked
     QObject::connect(ui->commandLinkButton,&QCommandLinkButton::clicked,this,&LoginView::showRegisterView);
 }
 
@@ -54,10 +51,7 @@ void LoginView::login(){
             mView->show();
         }
     } catch(std::exception& e){ //show messagebox, catch exception if input is wrong
-        QMessageBox msg;
-        msg.setText(e.what());
-        msg.setWindowTitle("Login failed");
-        msg.exec();
+        QMessageBox::warning(nullptr,"Login failed", e.what());
         this->show();
     }
 }

@@ -112,6 +112,4 @@ namespace Business {
 
         m_entryManager.deleteImageFile(filePath);
     }
-
-
 }
