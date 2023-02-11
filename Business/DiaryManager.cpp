@@ -84,9 +84,7 @@ namespace Business {
             }
         }
 
-        /* check if diary is the user's first one. If yes, diaryID is one.
-        If no, diaryID is the last given userID plus one */
-        int id = m_userDiaryMap->empty() ? 1 : m_userDiaryMap->last().getDiaryID()+1;
+        int id = m_diaryMap->empty() ? 1 : m_diaryMap->last().getDiaryID()+1; //generate diaryID according to m_diaryMap (map with all diaries)
         QMap<int, Common::Entry> emptyEntryList;
         Common::Diary newDiary(emptyEntryList, id, diaryName, userID);
 

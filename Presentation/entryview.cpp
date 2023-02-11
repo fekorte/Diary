@@ -27,7 +27,6 @@ EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, QWidge
     QWidget(parent), ui(new Ui::EntryView), m_b(b), m_currentDiary(currentDiary) {
 
     ui->setupUi(this);
-    //this->entryEdit->setAttribute(Qt::WA_StyledBackground);
 
     // Mood: Weekly review
     loadMoodsFromLast7Days(m_currentDiary);
