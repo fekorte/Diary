@@ -149,14 +149,24 @@ void MainWindow::displayFilteredEntries(){
 
 }
 
-
 void MainWindow::showEntryView(){
+
+
+    if(m_myDiaryMap.isEmpty()){
+        QMessageBox::information(nullptr,"DiaryApp", "Please create a diary before you start to write.");
+        return;
+    }
     this->close();
     EntryView* eview = new EntryView(m_business, m_currentDiary);
     eview->show();
 }
 
 void MainWindow::showTravelEntryView(){
+
+    if(m_myDiaryMap.isEmpty()){
+        QMessageBox::information(nullptr,"DiaryApp", "Please create a diary before you start to write.");
+        return;
+    }
     this->close();
     TravelView* eview = new TravelView(m_business, m_currentDiary);
     eview->show();
@@ -228,9 +238,10 @@ void MainWindow::createDiary(){
         //add the new diary to the selectBox
         ui->comboBox_ChangeDiary->addItem(text);
         ui->comboBox_ChangeDiary->setCurrentText(text);
+        m_currentDiary = text;
 
         m_myDiaryMap = m_business->getUserDiaryMap(m_business->getCurrentUser().getUserId());
-        m_currentDiary = m_business->getCurrentDiary(text, m_business->getCurrentUser().getUserId()).getDiaryName();
+        displayEntries();
 
         QMessageBox newDiaryMessage;
         newDiaryMessage.setText("Success! Your diary is waiting for your input.");
