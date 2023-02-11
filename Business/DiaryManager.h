@@ -28,17 +28,16 @@ public:
    DiaryManager();
    ~DiaryManager();
 
-    bool processCreateDiary(const QString diaryName, int userID);
+    bool processCreateDiary(const QString& diaryName, int userID);
 
-    bool deleteDiary(QString diaryName);
+    bool deleteDiary(const QString& diaryName);
 
     void updateDiaryMap();
-
-    //const QMap<int, Common::Diary>& getCurrentDiaryMap();
 
     const Common::Diary getDiary(const QString& diaryName);
 
     const Common::Diary& getCurrentDiary(const QString& diaryName, int userID);
+
     QMap<int, Common::Diary> updateDiariesMap_withNewEntries(const Common::Diary& currentDiary);
 
     void updateUserDiaryMap(int userID);

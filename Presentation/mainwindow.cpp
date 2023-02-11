@@ -19,7 +19,7 @@
  * @author Chachulski, Korte, Mathea
  */
 
-MainWindow::MainWindow(Business::IBusiness* b, QMap<int, Common::Diary> myDiaryMap, QWidget* parent) :
+MainWindow::MainWindow(Business::IBusiness* b, const QMap<int, Common::Diary>& myDiaryMap, QWidget* parent) :
     QMainWindow(parent), ui(new Ui::MainWindow), m_business(b), m_myDiaryMap(myDiaryMap){
 
     ui->setupUi(this);
@@ -116,8 +116,6 @@ void MainWindow::displayFilteredEntries(){
         QMap<int, Common::Entry> currentDiaryEntries = m_business->getDiary(m_currentDiary).getEntryMap();
         QStringList entriesString;
         QString topicString = ui->filterInput->text();
-
-        std::cout << "Do  you see me?" << std::endl;
 
             for(auto i:currentDiaryEntries)
             {
@@ -295,4 +293,4 @@ void MainWindow::openEntryView() {
         EntryView* eview = new EntryView(m_business, m_currentDiary, entry);
         eview->show();
     }
-    }
+}

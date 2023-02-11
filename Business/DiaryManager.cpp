@@ -75,7 +75,7 @@ namespace Business {
     // ------ End functions for writing/deleting entries ---------
 
 
-    bool DiaryManager::processCreateDiary(const QString diaryName, int userID){
+    bool DiaryManager::processCreateDiary(const QString& diaryName, int userID){
 
         /* check if Diary already exists*/
         for (Common::Diary diary : m_userDiaryMap->values()){
@@ -112,7 +112,7 @@ namespace Business {
         return 1;
     }
 
-    bool DiaryManager::deleteDiary(QString diaryName){
+    bool DiaryManager::deleteDiary(const QString& diaryName){
         for (Common::Diary diary: m_diaryMap->values()){
             if (diary.getDiaryName() == diaryName){
                 m_diaryMap->remove(diary.getDiaryID());

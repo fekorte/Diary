@@ -25,27 +25,25 @@ class EntryView : public QWidget{
     Q_OBJECT
 
 public:
-    explicit EntryView(Business::IBusiness* b, QString currentDiary, QWidget* parent = nullptr);
-    explicit EntryView(Business::IBusiness* b, QString currentDiary, Common::Entry entry, QWidget* parent = nullptr);
-
+    explicit EntryView(Business::IBusiness* b, const QString& currentDiary, QWidget* parent = nullptr);
+    explicit EntryView(Business::IBusiness* b, const QString& currentDiary, const Common::Entry& entry, QWidget* parent = nullptr);
     ~EntryView();
 
 public slots:
-    void setSelectedTopics(const QStringList &topics);
-    void onButtonDescription(const QString &description);
+    void setSelectedTopics(const QStringList& topics);
+    void onButtonDescription(const QString& description);
 
 protected:
-    //void closeEvent(QCloseEvent *event) override;
     void saveCurrentEntry();
-    void deleteEntry(Common::Entry entryID);
+    void deleteEntry(const Common::Entry& entryID);
     void clearEntry();
     void editEntry();
-    void updateEntry(Common::Entry entry);
+    void updateEntry(const Common::Entry& entry);
     void addTopic();
     void addMood();
     void setNonClosable();
     void on_suggestionBoxExec(const QString& mood);
-    void loadMoodsFromLast7Days(QString m_currentDiary);
+    void loadMoodsFromLast7Days(const QString& m_currentDiary);
     void showMainWindow();
 
 private:
@@ -64,7 +62,7 @@ private:
     MoodView *m_moodView;
     QTableWidget* moodTableWidget;
 
-    void showExerciseView(QString mood);
+    void showExerciseView(const QString& mood);
 
 private slots:
     void goBack();

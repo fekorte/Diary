@@ -21,7 +21,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(Business::IBusiness* b, QMap<int, Common::Diary> myDiaryMap, QWidget *parent = nullptr);
+    explicit MainWindow(Business::IBusiness* b, const QMap<int, Common::Diary>& myDiaryMap, QWidget *parent = nullptr);
     ~MainWindow();
 
 protected:

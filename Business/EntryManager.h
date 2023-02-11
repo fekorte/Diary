@@ -28,17 +28,17 @@ public:
     EntryManager();
     ~EntryManager();
 
-    const QString saveEntry(Common::Entry& entry);
-    void deleteEntry(Common::Entry entry);
-    int getNextPage(QString m_currentDiary, int m_currentUserID);
+    const QString saveEntry(Common::Entry entry);
+    void deleteEntry(const Common::Entry& entry);
+    int getNextPage(const QString& currentDiary, int m_currentUserID);
 
     QMap<int,Common::Entry> getCurrentDiaryEntries();
-    void setCurrentDiaryEntries(QList<Common::Entry> entries);
+    void setCurrentDiaryEntries(const QList<Common::Entry>& entries);
 
 
-    const Common::Entry loadEntry(QString diaryName,int m_currentUserID, int diaryPage);
+    const Common::Entry loadEntry(const QString& diaryName,int m_currentUserID, int diaryPage);
 
-    void writeTopics(QStringList topicList);
+    void writeTopics(const QStringList& topicList);
     const QStringList loadTopicList();
 
     const QString travelContinentChoice(const QString& decision, const QStringList& continents);

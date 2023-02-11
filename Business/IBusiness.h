@@ -22,16 +22,16 @@ public:
     virtual bool registerUser(const QString& email, const QString& userName, const QString& password) = 0;
     virtual void deleteCurrentUser() = 0;
     virtual const Common::User& getCurrentUser() = 0;
-    virtual bool createDiary(QString diaryName, int userID) = 0;
+    virtual bool createDiary(const QString& diaryName, int userID) = 0;
     virtual const QMap<int, Common::Diary>& getUserDiaryMap(int userID) = 0;
-    virtual bool deleteDiary(QString diaryName) = 0;
+    virtual bool deleteDiary(const QString& diaryName) = 0;
     virtual const Common::Diary getDiary(const QString&) = 0;
-    virtual const QString saveEntry(Common::Entry& entry) = 0;
-    virtual void deleteEntry(Common::Entry entryID)=0;
-    virtual int getNextPage(QString m_currentDiary,int currentUserID)=0;
-    virtual const Common::Entry loadEntry(QString diaryName, int currentUser, int diaryPage)=0;
+    virtual const QString saveEntry(const Common::Entry& entry) = 0;
+    virtual void deleteEntry(const Common::Entry& entryID)=0;
+    virtual int getNextPage(const QString& currentDiary,int currentUserID)=0;
+    virtual const Common::Entry loadEntry(const QString& diaryName, int currentUser, int diaryPage)=0;
     virtual const QStringList loadTopicList()=0;
-    virtual void writeTopics(QStringList topicList)=0;
+    virtual void writeTopics(const QStringList& topicList)=0;
     virtual const QString travelContinentChoice(const QString& decision, const QStringList& continents) = 0;
     virtual void deleteImageFile(const QString& filePath) = 0;
 

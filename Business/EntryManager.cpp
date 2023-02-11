@@ -39,7 +39,7 @@ namespace Business{
         m_filePersistence = nullptr;
     }
 
-    const QString EntryManager::saveEntry(Common::Entry& entry){
+    const QString EntryManager::saveEntry(Common::Entry entry){
 
         // update current diary with the new entry
         if (m_diaryManager != nullptr) {
@@ -91,7 +91,7 @@ namespace Business{
     }
 
 
-    void EntryManager::deleteEntry(Common::Entry entry){
+    void EntryManager::deleteEntry(const Common::Entry& entry){
 
         // update current diary by deleting the selected entry
         if (m_diaryManager != nullptr) {
@@ -124,7 +124,7 @@ namespace Business{
     }
 
 
-    int EntryManager::getNextPage(QString m_currentDiary, int m_currentUserID){
+    int EntryManager::getNextPage(const QString& m_currentDiary, int m_currentUserID){
         // set current diary
         Common::Diary currentDiary = m_diaryManager->getCurrentDiary(m_currentDiary, m_currentUserID);
 
@@ -147,7 +147,7 @@ namespace Business{
     }
 
 
-    const Common::Entry EntryManager::loadEntry(QString diaryName,int m_currentUserID, int diaryPage){
+    const Common::Entry EntryManager::loadEntry(const QString& diaryName,int m_currentUserID, int diaryPage){
 
         Common::Entry returnEntry;
 
@@ -165,7 +165,7 @@ namespace Business{
 
     }
 
-    void EntryManager::writeTopics(QStringList topicList){
+    void EntryManager::writeTopics(const QStringList& topicList){
         m_filePersistence->writeTopics(topicList);
     }
 

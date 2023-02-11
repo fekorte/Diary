@@ -27,9 +27,9 @@ public:
     explicit TopicView(Business::IBusiness* b, QWidget *parent = nullptr);
     ~TopicView();
 
-    void writeTopics(QStringList topicList);
+    void writeTopics(const QStringList& topicList);
     QStringList loadTopicList();
-    void setSelectedTopics(const QStringList &topics);
+    void setSelectedTopics(const QStringList& topics);
     void saveSelectedTopics();
     void updateTopicList();
     void addANewTopic();
@@ -50,7 +50,7 @@ private:
     QPlainTextEdit* searchTopicText;
 
 signals:
-    void selectedTopicsChanged(const QStringList &topics);
+    void selectedTopicsChanged(const QStringList& topics);
 };
 
 #endif // TOPICVIEW_H

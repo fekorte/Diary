@@ -44,15 +44,14 @@ void LoginView::login(){
     QString password = ui->lineEdit_2->text();
 
     try{
-        this->close();
         if(m_b->login(userName, password)){
             QMap<int, Common::Diary> myDiaryMap = m_b->getUserDiaryMap(m_b->getCurrentUser().getUserId());
             MainWindow* mView = new MainWindow(m_b, myDiaryMap);
+            this->close();
             mView->show();
         }
     } catch(std::exception& e){ //show messagebox, catch exception if input is wrong
         QMessageBox::warning(nullptr,"Login failed", e.what());
-        this->show();
     }
 }
 

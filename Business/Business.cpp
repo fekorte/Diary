@@ -52,12 +52,12 @@ namespace Business {
          return m_userManager.getCurrentUser();
      }
 
-     bool Business::createDiary(QString diaryName, int userID){
+     bool Business::createDiary(const QString& diaryName, int userID){
 
         return m_diaryManager.processCreateDiary(diaryName, userID);
      }
 
-     bool Business::deleteDiary(QString diaryName) {
+     bool Business::deleteDiary(const QString& diaryName) {
 
          return m_diaryManager.deleteDiary(diaryName);
      }
@@ -72,28 +72,28 @@ namespace Business {
          return m_diaryManager.getUserDiaryMap(userID);
      }
 
-    const QString Business::saveEntry(Common::Entry& currentEntry) {
+    const QString Business::saveEntry(const Common::Entry& currentEntry) {
 
         return m_entryManager.saveEntry(currentEntry);
 
     }
 
-    void Business::deleteEntry(Common::Entry entry){
+    void Business::deleteEntry(const Common::Entry& entry){
 
         m_entryManager.deleteEntry(entry);
     }
 
-    int Business::getNextPage(QString m_currentDiary, int currentUserID){
+    int Business::getNextPage(const QString& currentDiary, int currentUserID){
 
-        return m_entryManager.getNextPage(m_currentDiary, currentUserID);
+        return m_entryManager.getNextPage(currentDiary, currentUserID);
     }
 
-    const Common::Entry Business::loadEntry(QString diaryName,int m_currentUserID, int diaryPage){
+    const Common::Entry Business::loadEntry(const QString& diaryName,int m_currentUserID, int diaryPage){
 
         return m_entryManager.loadEntry(diaryName,m_currentUserID, diaryPage);
     }
 
-    void Business::writeTopics(QStringList topicList){
+    void Business::writeTopics(const QStringList& topicList){
 
         m_entryManager.writeTopics(topicList);
     }

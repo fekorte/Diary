@@ -12,10 +12,6 @@
 #include <QMessageBox>
 #include "exerciseview.h"
 #include <iostream>
-//#include <QtNetwork>
-//#include <QNetworkAccessManager>
-//#include <QNetworkReply>
-//#include <QNetworkRequest>
 
 /**
  * The class EntryView is responsible for displaying a new entry in the diary and allowing the user to edit/update it.
@@ -27,7 +23,7 @@
  * @author Chachulski, Korte, Mathea
  */
 
-EntryView::EntryView(Business::IBusiness* b, QString currentDiary, QWidget* parent) :
+EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, QWidget* parent) :
     QWidget(parent), ui(new Ui::EntryView), m_b(b), m_currentDiary(currentDiary) {
 
     ui->setupUi(this);
@@ -57,7 +53,7 @@ EntryView::EntryView(Business::IBusiness* b, QString currentDiary, QWidget* pare
 
 }
 
-EntryView::EntryView(Business::IBusiness* b, QString currentDiary, Common::Entry entry, QWidget *parent):
+EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, const Common::Entry& entry, QWidget *parent):
     QWidget(parent),
     ui(new Ui::EntryView), m_b(b), m_currentDiary(currentDiary), m_entry(entry){
 
@@ -158,7 +154,7 @@ void EntryView::saveCurrentEntry(){
 }
 
 
-void EntryView::updateEntry(Common::Entry entry){
+void EntryView::updateEntry(const Common::Entry& entry){
 
      QString text;
      scrollArea = new QScrollArea;
@@ -183,7 +179,7 @@ void EntryView::updateEntry(Common::Entry entry){
 }
 
 
-void EntryView::deleteEntry(Common::Entry entry){
+void EntryView::deleteEntry(const Common::Entry& entry){
 
     QMessageBox::StandardButton deleteThisEntry;
     deleteThisEntry = QMessageBox::question(nullptr, "Delete This Memory?",
@@ -216,7 +212,7 @@ void EntryView::editEntry(){
 }
 
 
-void EntryView::showExerciseView(QString mood){
+void EntryView::showExerciseView(const QString& mood){
 
     ExerciseView* exView = new ExerciseView(mood);
     exView->setAccessibleName("Mental Trainer");
@@ -260,7 +256,7 @@ void EntryView::onButtonDescription(const QString &description){
 
 
 
-void EntryView::loadMoodsFromLast7Days(QString m_currentDiary)
+void EntryView::loadMoodsFromLast7Days(const QString& m_currentDiary)
 {
     Common::Diary currentDiary = m_b->getDiary(m_currentDiary);
 

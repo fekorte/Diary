@@ -16,7 +16,7 @@ class ExerciseView : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit ExerciseView(QString mood, QWidget *parent = nullptr);
+    explicit ExerciseView(const QString& mood, QWidget *parent = nullptr);
     ~ExerciseView();
 
 private:

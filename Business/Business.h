@@ -38,25 +38,25 @@ public:
 
     const Common::User& getCurrentUser() override;
 
-    const QString saveEntry(Common::Entry& entry) override;
+    const QString saveEntry(const Common::Entry& entry) override;
 
-    void deleteEntry(Common::Entry entryID) override;
+    void deleteEntry(const Common::Entry& entryID) override;
 
-    bool createDiary(QString diaryName, int userID) override;
+    bool createDiary(const QString& diaryName, int userID) override;
 
-    bool deleteDiary(QString diaryName) override;
+    bool deleteDiary(const QString& diaryName) override;
 
     const Common::Diary getDiary(const QString&) override;
 
     const QMap<int, Common::Diary>& getUserDiaryMap(int userID) override;
 
-    int getNextPage(QString m_currentDiary, int currentUserID) override;
+    int getNextPage(const QString& m_currentDiary, int currentUserID) override;
 
-    const Common::Entry loadEntry(QString diaryName,int m_currentUserID, int diaryPage) override;
+    const Common::Entry loadEntry(const QString& diaryName, int currentUserID, int diaryPage) override;
 
     const QStringList loadTopicList() override;
 
-    void writeTopics(QStringList topicList) override;
+    void writeTopics(const QStringList& topicList) override;
 
     const QString travelContinentChoice(const QString& decision, const QStringList& continents) override;
 

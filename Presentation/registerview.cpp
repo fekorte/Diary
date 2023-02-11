@@ -38,8 +38,6 @@ void RegisterView::registerNewUser(){
     QString userName = ui->lineEdit->text();
     QString password = ui->lineEdit_2->text();
 
-    QMessageBox msg;
-
     try{
         if(m_b->registerUser(email,userName,password)){
             QMessageBox::information(nullptr,"Registration", "Successful registration");

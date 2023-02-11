@@ -11,7 +11,7 @@
  *
  */
 
-ExerciseView::ExerciseView(QString mood, QWidget* parent) :
+ExerciseView::ExerciseView(const QString& mood, QWidget* parent) :
     QMainWindow(parent), ui(new Ui::ExerciseView){
 
     ui->setupUi(this);

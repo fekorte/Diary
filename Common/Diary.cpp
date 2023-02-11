@@ -10,8 +10,7 @@
 namespace Common{
     Diary::Diary(){}
 
-    Diary::Diary(QMap<int, Entry> entries, int diaryID, QString diaryName, int userID): m_entries(entries), m_diaryID(diaryID), m_diaryName(diaryName), m_userID(userID){
-    }
+    Diary::Diary(QMap<int, Entry> entries, int diaryID, QString diaryName, int userID): m_entries(entries), m_diaryID(diaryID), m_diaryName(diaryName), m_userID(userID){}
 
 
     Diary::~Diary(){

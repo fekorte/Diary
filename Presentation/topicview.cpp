@@ -59,7 +59,7 @@ QStringList TopicView::loadTopicList(){
     return m_business->loadTopicList();
 }
 
-void TopicView::writeTopics(QStringList topicList){
+void TopicView::writeTopics(const QStringList& topicList){
 
     m_business->writeTopics(topicList);
 }
@@ -110,7 +110,7 @@ void TopicView::addANewTopic(){
     ui->addTopicText->clear();
 }
 
-void TopicView::setSelectedTopics(const QStringList &topics){
+void TopicView::setSelectedTopics(const QStringList& topics){
 
     emit selectedTopicsChanged(topics);
 }
