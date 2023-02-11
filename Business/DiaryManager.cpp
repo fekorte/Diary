@@ -95,6 +95,7 @@ namespace Business {
 
         if(getDiaryId(diaryName) != 0){
             m_diaryMap->remove(getDiaryId(diaryName));
+            m_persistence->writeDiaries(*m_diaryMap);
             return true;
         }
         return false;

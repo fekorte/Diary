@@ -42,14 +42,9 @@ EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, QWidge
     QObject::connect(ui->addMoodButton, &QPushButton::clicked, this, &EntryView::addMood);
     QObject::connect(ui->goBackButton,&QPushButton::clicked,this,&EntryView::goBack);
 
-    // EntryView constantly closes after save button. Until error is found, use this:
-    QObject::connect(ui->saveEntryButton,&QPushButton::clicked,this,&EntryView::setNonClosable);
-
     currentUser = m_b->getCurrentUser();
     currentUserID = m_b->getCurrentUser().getUserId();
-
     ui->editEntryButton->setEnabled(false);
-
 }
 
 EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, const Common::Entry& entry, QWidget *parent):
@@ -132,11 +127,11 @@ void EntryView::saveCurrentEntry(){
             ui->entryEdit->setFocus();
             QMessageBox::information(this, "Entry Saved!", "Another page is added to the story of your  life.");
             ui->editEntryButton->setEnabled(true);
-            return;
-        }else {
+            showMainWindow();
+        } else {
             ui->entryEdit->setReadOnly(true);
             ui->entryEdit->setFocus();
-            QMessageBox::information(this, "Entry Saved!", "Another page is added to the story of your  life.");
+            QMessageBox::information(this, "Entry Saved!", "Another page is added to the story of your life.");
             ui->editEntryButton->setEnabled(true);
 
             //Dialog des Mental Trainers
@@ -146,6 +141,7 @@ void EntryView::saveCurrentEntry(){
                                                 "feel better?", QMessageBox::Yes|QMessageBox::No);
 
             if(suggestion == QMessageBox::Yes){
+                showMainWindow();
                 showExerciseView(mood);
             }
         }
@@ -169,8 +165,8 @@ void EntryView::updateEntry(const Common::Entry& entry){
     if (!text.isEmpty()){
 
         Common::Entry newEntry(entry.getUserID(),entry.getPage(),text,entry.getDate(), entry.getDiaryName(), entry.getTopics(), entry.getMood());
-
         m_b->saveEntry(newEntry);
+        QMessageBox::information(this, "Entry Updated!", "Your diary entry has been updated.");
         ui->entryEdit->setReadOnly(true);
         ui->entryEdit->setFocus();
 
@@ -189,6 +185,8 @@ void EntryView::deleteEntry(const Common::Entry& entry){
         m_b->deleteEntry(entry);
         ui->entryEdit->setText("");
     }
+
+    showMainWindow();
 }
 
 
@@ -249,10 +247,8 @@ void EntryView::addMood(){
 
 void EntryView::onButtonDescription(const QString &description){
 
-    mood=description;
+    mood = description;
 }
-
-
 
 
 void EntryView::loadMoodsFromLast7Days(const QString& m_currentDiary)

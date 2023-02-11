@@ -74,16 +74,16 @@ namespace Business{
 
         //start mentalTrainer if applicable
         QList<QString> moodList;
-        moodList.append("stressed");
-        moodList.append("nervous");
-        moodList.append("sad");
-        moodList.append("tired");
-        moodList.append("angry");
-        moodList.append("anxious");
+        moodList.append("Stressed");
+        moodList.append("Nervous");
+        moodList.append("Sad");
+        moodList.append("Tired");
+        moodList.append("Angry");
+        moodList.append("Anxious");
 
         QString currentMood = entry.getMood();
 
-        if (entry.getTopics().contains("Mood Tracker") && moodList.contains(currentMood)){
+        if (moodList.contains(currentMood)){
             return currentMood;
         }else {
             return "-";
