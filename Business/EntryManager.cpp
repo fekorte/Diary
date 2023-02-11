@@ -132,7 +132,7 @@ namespace Business{
         // retrieve all current diary entries
         entriesCurrentDiary = currentDiary.getEntryMap();
 
-        int newNumber = entriesCurrentDiary.isEmpty() ? 0 : entriesCurrentDiary.lastKey() + 1;
+        int newNumber = entriesCurrentDiary.isEmpty() ? 1 : entriesCurrentDiary.lastKey() + 1;
 
         return newNumber;
 

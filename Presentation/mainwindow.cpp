@@ -146,7 +146,6 @@ void MainWindow::displayFilteredEntries(){
 }
 
 
-
 void MainWindow::showEntryView(){
     this->close();
     EntryView* eview = new EntryView(m_business, m_currentDiary);
@@ -258,12 +257,6 @@ void MainWindow::deleteDiary(){
     newDiaryMessage.exec();
 
     m_currentDiary = ui->comboBox_ChangeDiary->currentText();
-
-    if (m_myDiaryMap.empty()){
-        ui->menuMy_diary->menuAction()->setVisible(false);
-    }else{
-         ui->menuMy_diary->setTitle("Filter " + m_currentDiary);
-    }
 
     displayEntries();
 }
