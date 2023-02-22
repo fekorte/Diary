@@ -151,7 +151,6 @@ void MainWindow::displayFilteredEntries(){
 
 void MainWindow::showEntryView(){
 
-
     if(m_myDiaryMap.isEmpty()){
         QMessageBox::information(nullptr,"DiaryApp", "Please create a diary before you start to write.");
         return;
@@ -282,11 +281,8 @@ void MainWindow::openEntryView() {
     QStringList parts = entryName.split(" ");
     int pageID = parts[1].toInt();
 
-    //retrive the entry data from the business logic
+    //retrieve the entry data from the business logic
     Common::Entry entry = m_business->loadEntry(m_currentDiary, m_business->getCurrentUser().getUserId(),pageID);
-
-    std::cout << entry.getMyNote().toStdString() << std::endl;
-
 
     this->close();
 

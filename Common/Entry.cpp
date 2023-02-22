@@ -78,7 +78,6 @@ void Entry::setPathToImgFile(const QString& pathToImgFile){
 QDataStream &operator<<(QDataStream &out, const Entry &entry){
 
     QStringList topicList = entry.getTopics();
-    //QByteArray byteArrayTopicList = entry.getTopics().join("|").toUtf8();
 
     out << entry.getUserID() << entry.getPage() << entry.getMyNote() << entry.getDate() << entry.getDiaryName() << topicList << entry.getMood();
 

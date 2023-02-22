@@ -105,7 +105,7 @@ void FilePersistence::writeMoodTrackingData(QStringList& trackingDataList) {
             stream << line;
             if (++count % 6 == 0) {
                 //outcommented line because my (Felina Korte) QTVersion 5.12.8 does not support it
-                // stream << Qt::endl;
+                //stream << Qt::endl;
                 stream << "\n";
             } else {
                 stream << ", ";
