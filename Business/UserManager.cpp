@@ -5,7 +5,6 @@
 /**
  * Handels all actions related to User Objects.
  * Reads and writes user-related data from and to the persistence layer.
- * Saves a pointer to the currently logged in user as a member attribute (m_currentUser).
  *
  * Used by class Business for intermediation between presentation layer and implemented business logic related to User Objects.
  *
@@ -47,7 +46,7 @@ namespace Business{
 
    bool UserManager::processRegister(const QString& email, const QString& userName, const QString& password){
 
-        if(email == "" || userName == "" || password == ""){ //check for empty input
+        if(email.isEmpty() || userName.isEmpty() || password.isEmpty()){
             throw std::invalid_argument("Invalid input. Please try again.");
         }
 
@@ -66,7 +65,7 @@ namespace Business{
             }
         }
 
-      int id = userMap.empty() ? 1 : userMap.last().getUserId()+1; //check if user is the first one to register. If yes, userID is one. If no, userId is the last given userID plus one
+      int id = userMap.empty() ? 1 : userMap.last().getUserId()+1; //generate userID based on userMap
       Common::User newUser(id, email, userName, password);
       userMap.insert(newUser.getUserId(), newUser);
       m_filePersistence->writeUserMapToFile(userMap);

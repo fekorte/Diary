@@ -100,7 +100,6 @@ namespace Business {
 
 
     //Diary related functions
-
     bool Business::createDiary(const QString& diaryName, int userID){
 
        return m_diaryManager.processCreateDiary(diaryName, userID);
