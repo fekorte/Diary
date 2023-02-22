@@ -65,6 +65,8 @@ TravelView::TravelView(Business::IBusiness* b, const QString& currentDiary, cons
 
     displayMap();
     displayImage();
+
+    qDebug() << entry.getPathToMapFile();
 }
 
 void TravelView::initialize(){
