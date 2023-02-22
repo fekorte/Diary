@@ -90,9 +90,7 @@ DISTFILES += \
     Data/tired.txt \
     Diaries.bin \
     Entries.bin \
-    Images/desk.jpg \
-    Images/drawnNotebook.jpg \
-    Images/white.png \ \
+    \ \
 
 
 

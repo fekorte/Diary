@@ -90,8 +90,6 @@ void TravelView::initialize(){
 
 TravelView::~TravelView(){
 
-    delete m_travelMap;
-    m_travelMap = nullptr;
     delete ui;
     ui = nullptr;
 }
