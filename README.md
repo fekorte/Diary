@@ -1,6 +1,8 @@
 # DiaryApp
 
-This is a Diary Application in C++, where the user can:
+This is a Diary Application in C++, written together with @AlgoArtee and @KaZebra.
+
+The user can:
 
 - create, add and delete different diaries
 - create, add, edit or delete entries, or special travel entries
