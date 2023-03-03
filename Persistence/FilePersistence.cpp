@@ -8,7 +8,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDebug>
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <QMap>

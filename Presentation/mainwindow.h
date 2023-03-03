@@ -34,6 +34,7 @@ private slots:
     void deleteUser();
     void showEntryView();
     void showTravelEntryView();
+    void showTrackingView();
     void changeDiary();
     void createDiary();
     void deleteDiary();
@@ -48,9 +49,11 @@ private:
     QListWidget* pastEntriesListWidget;
 
     const QList<QString> getDiaryNameList();
+    const QString getDisplayType(const Common::Entry& entry);
 
     QLineEdit* filterInput;
     QPushButton* filterButton;
+    QPushButton* trackMoodPushButton;
 };
 
 #endif // MAINWINDOW_H

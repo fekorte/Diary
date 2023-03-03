@@ -5,7 +5,6 @@
 #include "Persistence/IPersistence.h"
 #include <QMap>
 #include <QString>
-#include <iostream>
 
 /*
  * @author Chachulski, Korte, Mathea

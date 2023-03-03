@@ -98,6 +98,17 @@ namespace Business {
         m_entryManager.deleteImageFile(filePath);
     }
 
+    void Business::writeMoodTrackingData(QStringList& trackingDataList){
+
+        m_moodTrackManager.writeMoodTrackingData(trackingDataList);
+
+    }
+
+    const QList<QStringList> Business::loadSavedTrackingData(const QString& diaryName){
+        return m_moodTrackManager.loadSavedTrackingData(diaryName);
+    }
+
+
 
     //Diary related functions
     bool Business::createDiary(const QString& diaryName, int userID){

@@ -4,10 +4,10 @@
 #include "entryview.h"
 #include "travelview.h"
 #include "Business/IBusiness.h"
+#include "moodtrackingview.h"
 #include "Common/User.h"
 #include <QString>
 #include <QMessageBox>
-#include <iostream>
 #include <QLineEdit>
 #include <QInputDialog>
 #include <QStringListModel>
@@ -29,7 +29,7 @@ MainWindow::MainWindow(Business::IBusiness* b, const QMap<QString, Common::Diary
     if (m_myDiaryMap.empty()){
                 createDiary();
                 ui->menuMy_diary->menuAction()->setVisible(false);
-    }else {
+    } else {
         ui->comboBox_ChangeDiary->addItems(getDiaryNameList());
         m_currentDiary = ui->comboBox_ChangeDiary->currentText();
     }
@@ -55,6 +55,8 @@ MainWindow::MainWindow(Business::IBusiness* b, const QMap<QString, Common::Diary
 
     QObject::connect(ui->filterButton, &QPushButton::clicked, this, &MainWindow::displayFilteredEntries);
 
+    QObject::connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::showTrackingView);
+
     displayEntries();
 }
 
@@ -74,6 +76,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
 }
 
 void MainWindow::displayEntries(){
+
     ui->pastEntriesListWidget->clear();
     try{
 
@@ -87,33 +90,20 @@ void MainWindow::displayEntries(){
         if(filterInput->text().isEmpty()){
             for(auto i:currentDiaryEntries)
             {
-                Common::Entry entry = i;
-
-                int page = entry.getPage();
-                QString date = entry.getDate();
-
-                QString displayEntry;
-                if(entry.getTopics().contains("Travelling")){
-                    displayEntry = "Page " + QString::number(page) + "  " + date + "  " + entry.getPlace();
-                } else {
-                    displayEntry = "Page " + QString::number(page) + " ... " + date;
-                }
-                entriesString.append(displayEntry);
+                entriesString.append(getDisplayType(i));
             }
-
             ui->pastEntriesListWidget->addItems(entriesString);
         }
-
-
 
     } catch (...) {
         // handle exception
         std::cerr << "Error loading diary entries" << std::endl;
     }
-    
+
 }
 
 void MainWindow::displayFilteredEntries(){
+
     ui->pastEntriesListWidget->clear();
     try{
 
@@ -123,24 +113,12 @@ void MainWindow::displayFilteredEntries(){
 
             for(auto i:currentDiaryEntries)
             {
-                Common::Entry entry = i;
-
-                if(entry.getTopics().contains(topicString)){
-                    int page = entry.getPage();
-                    QString date = entry.getDate();
-
-                    QString displayEntry;
-                    if(entry.getTopics().contains("Travelling")){
-                        displayEntry = "Page " + QString::number(page) + "  " + date + "  " + entry.getPlace();
-                    } else {
-                        displayEntry = "Page " + QString::number(page) + " ... " + date;
-                    }
-                    entriesString.append(displayEntry);
+                if(i.getTopics().contains(topicString)){
+                    entriesString.append(getDisplayType(i));
                 }
             }
 
             ui->pastEntriesListWidget->addItems(entriesString);
-
 
     } catch (...) {
         // handle exception
@@ -148,6 +126,22 @@ void MainWindow::displayFilteredEntries(){
     }
 
 }
+
+const QString MainWindow::getDisplayType(const Common::Entry& entry){
+
+    QString returnDisplayType;
+    int page = entry.getPage();
+    QString date = entry.getDate();
+
+    if(entry.getTopics().contains("Travelling")){
+        returnDisplayType = "Page " + QString::number(page) + "  " + date + "  " + entry.getPlace();
+    } else {
+        returnDisplayType = "Page " + QString::number(page) + " ... " + date;
+    }
+
+    return returnDisplayType;
+}
+
 
 void MainWindow::showEntryView(){
 
@@ -171,13 +165,35 @@ void MainWindow::showTravelEntryView(){
     eview->show();
 }
 
+void MainWindow::showTrackingView(){
+
+    bool onlyTravelEntries;
+    for(const Common::Entry& entry : m_myDiaryMap.value(m_currentDiary).getEntryMap()){
+        if(!entry.getTopics().contains("Travelling")){
+            onlyTravelEntries = false;
+            break;
+        }
+        onlyTravelEntries = true;
+    }
+
+    if(onlyTravelEntries){
+        QMessageBox::information(nullptr,"DiaryApp", "Mood tracking is not available for travel entries.");
+        return;
+    }
+
+    MoodTrackingView* mtView = new MoodTrackingView(m_business, m_currentDiary, nullptr);
+    mtView->show();
+}
+
 void MainWindow::showLoginView(){
+
     this->close();
     LoginView* lView = new LoginView(m_business);
     lView->show();
 }
 
 void MainWindow::deleteUser(){
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(nullptr, "Delete account", "Are you sure that you want to delete your account?", QMessageBox::Yes|QMessageBox::No);
     if(reply == QMessageBox::Yes){
@@ -187,6 +203,7 @@ void MainWindow::deleteUser(){
 }
 
 const QList<QString> MainWindow::getDiaryNameList(){
+
     QList<QString> diaryNameList;
     for (Common::Diary& diary : m_myDiaryMap){
         diaryNameList.append(diary.getDiaryName());
@@ -195,6 +212,7 @@ const QList<QString> MainWindow::getDiaryNameList(){
 }
 
 void MainWindow::changeDiary(){
+
     //get diary name from comboBox
     m_currentDiary = ui->comboBox_ChangeDiary->currentText();
 
@@ -295,3 +313,5 @@ void MainWindow::openEntryView() {
         eview->show();
     }
 }
+
+

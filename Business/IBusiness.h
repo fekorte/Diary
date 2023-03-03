@@ -35,6 +35,8 @@ public:
     virtual void writeTopics(const QStringList& topicList)=0;
     virtual const QString travelContinentChoice(const QString& decision, const QStringList& continents) = 0;
     virtual void deleteImageFile(const QString& filePath) = 0;
+    virtual void writeMoodTrackingData(QStringList& trackingDataList) = 0;
+    virtual const QList<QStringList> loadSavedTrackingData(const QString& diaryName) = 0;
 
 
     //Diary related functions

@@ -45,6 +45,8 @@ protected:
     void on_suggestionBoxExec(const QString& mood);
     void loadMoodsFromLast7Days(const QString& m_currentDiary);
     void showMainWindow();
+    QString getMoodValue(QString mood);
+    QString extractValueFromUBA(const QString &dateTime, int component);
 
 private:
     Ui::EntryView* ui;

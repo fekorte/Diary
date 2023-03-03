@@ -6,12 +6,15 @@
 #include "Common/User.h"
 #include "Common/Entry.h"
 #include "Common/Entry.h"
+#include "exerciseview.h"
 #include <QString>
 #include <QTextEdit>
 #include <string>
 #include <QMessageBox>
-#include "exerciseview.h"
-#include <iostream>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 
 /**
  * The class EntryView is responsible for displaying a new entry in the diary and allowing the user to edit/update it.
@@ -119,6 +122,29 @@ void EntryView::saveCurrentEntry(){
             mood = "Neutral";
         }
 
+        // Save MoodTrackingData
+        QStringList trackingData;
+
+        trackingData.append(m_currentDiary);
+        trackingData.append(QString::number(page));
+
+        // Moods are assigned a numeric value
+        QString moodValue;
+        moodValue = getMoodValue(mood);
+        trackingData.append(moodValue);
+
+        // Air quality Data is retrieved by the UBA Api
+        QString pm10_var = extractValueFromUBA(dateString,1);
+        trackingData.append(pm10_var);
+
+        QString CO_var = extractValueFromUBA(dateString,2);
+        trackingData.append(CO_var);
+
+        QString SO2_var = extractValueFromUBA(dateString,4);
+        trackingData.append(SO2_var);
+
+        m_b->writeMoodTrackingData(trackingData);
+
 
         Common::Entry newEntry(currentUserID,page,text,dateString, diaryName, topicList, mood);
 
@@ -134,6 +160,8 @@ void EntryView::saveCurrentEntry(){
             QMessageBox::information(this, "Entry Saved!", "Another page is added to the story of your life.");
             ui->editEntryButton->setEnabled(true);
 
+            showMainWindow();
+
             //Dialog des Mental Trainers
             QMessageBox::StandardButton suggestion;
             suggestion = QMessageBox::question(nullptr, "Mental Trainer",
@@ -141,7 +169,6 @@ void EntryView::saveCurrentEntry(){
                                                 "feel better?", QMessageBox::Yes|QMessageBox::No);
 
             if(suggestion == QMessageBox::Yes){
-                showMainWindow();
                 showExerciseView(mood);
             }
         }
@@ -336,6 +363,91 @@ void EntryView::loadMoodsFromLast7Days(const QString& m_currentDiary)
         // handle the exception here
     }
 }
+
+
+QString EntryView::getMoodValue(QString mood){
+
+    QString moodValue;
+
+        if (mood == "Angry") {
+            moodValue = "-6";
+        } else if (mood == "Anxious") {
+            moodValue = "-5";
+        } else if (mood == "Tired") {
+            moodValue = "-4";
+        } else if (mood == "Nervous") {
+            moodValue = "-3";
+        } else if (mood == "Stressed") {
+            moodValue = "-2";
+        } else if (mood == "Sad") {
+            moodValue = "-1";
+        } else if (mood == "Balanced") {
+            moodValue = "1";
+        } else if (mood == "Wide Awake") {
+            moodValue = "2";
+        } else if (mood == "Satisfied") {
+            moodValue = "3";
+        } else if (mood == "Joyful") {
+            moodValue = "4";
+        } else if (mood == "Excited") {
+            moodValue = "5";
+        } else if (mood == "Ecstatic") {
+            moodValue = "6";
+        } else {
+            moodValue = QString::number(0);
+        }
+        return moodValue;
+}
+
+
+// Data from the UmweltBundesAmt (UBA) API on PM10, CO and SO2 iss requested
+// The scope is set to 2, which represents the one hour mean value
+QString EntryView::extractValueFromUBA(const QString &dateTime, int component) {
+    const auto dateTimeList = dateTime.split(" ");
+    const QString &day = dateTimeList[0];
+
+    auto timeList = dateTimeList[1].split(":");
+    int hour = timeList[0].toInt();
+    hour = hour == 0 ? 24 : hour;
+
+    hour = hour-1; // because the UBA api doesn't always have data on the current hour, we take the mean from one hour before
+
+    QString urlString = "https://www.umweltbundesamt.de/api/air_data/v2/measures/json?date_from=" + day + "&date_to=" + day + "&time_from=" + QString::number(hour) + "&time_to=" + QString::number(hour) + "&station=616&component=" + QString::number(component) + "&scope2";
+
+    QNetworkAccessManager manager;
+    QNetworkReply *reply = manager.get(QNetworkRequest(QUrl(urlString)));
+    QEventLoop loop;
+    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    QTimer timer;
+    timer.setSingleShot(true);
+    connect(&timer, &QTimer::timeout, &loop, &QEventLoop::quit);
+    timer.start(5000); // 5 seconds timeout
+    loop.exec();
+
+    if (timer.isActive()) {
+        timer.stop();
+        const auto jsonData = reply->readAll();
+        reply->deleteLater();
+
+        const auto jsonDoc = QJsonDocument::fromJson(jsonData);
+        const auto jsonObj = jsonDoc.object();
+        const auto data = jsonObj["data"].toObject();
+        const auto stationData = data["616"].toObject();
+
+        const auto array = stationData.begin().value().toArray();
+        double dComponent = array[2].toDouble();
+
+        QString value = QString::number(dComponent);
+
+        return value;
+
+    } else {
+        qWarning() << "Network request timed out";
+        return QString();
+    }
+}
+
+
 
 void EntryView::showMainWindow(){
 

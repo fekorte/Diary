@@ -1,4 +1,0 @@
-ifndef SESSIONSTATE_H
-#define SESSIONSTATE_H
-
-#endif // SESSIONSTATE_H

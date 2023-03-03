@@ -22,17 +22,15 @@ public:
     FilePersistence();
     ~FilePersistence();
 
+    //Diary related functions
     void writeDiaries(const QMap<int, Common::Diary>& diaryMap) override;
-
     QMap<int, Common::Diary> readDiaries() const override;
 
-
-    //QMap<int, Common::Entry> readDiaryEntries() const override;
-
+    //User related functions
     void writeUserMapToFile(const QMap<int, Common::User>& users) override;
-
     QMap<int, Common::User> readUserMapFromFile() const override;
 
+    //Entry related functions
     QStringList loadTopicListFromFile() const override;
     void writeTopics(const QStringList topicList) override;
     void writeMoodTrackingData(QStringList& trackingDataList) override;

@@ -3,7 +3,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++20
-
+QT += network
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -20,6 +20,7 @@ SOURCES += \
         Business/Business.cpp \
         Business/DiaryManager.cpp \
         Business/EntryManager.cpp \
+        Business/MoodTrackManager.cpp \
         Business/UserManager.cpp \
         Common/Diary.cpp \
         Common/Entry.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
         Presentation/exerciseview.cpp \
         Presentation/loginview.cpp \
         Presentation/mainwindow.cpp \
+        Presentation/moodtrackingview.cpp \
         Presentation/moodview.cpp \
         Presentation/registerview.cpp \
         Presentation/topicview.cpp \
@@ -46,6 +48,7 @@ HEADERS += \
     Business/DiaryManager.h \
     Business/EntryManager.h \
     Business/IBusiness.h \
+    Business/MoodTrackManager.h \
     Business/UserManager.h \
     Common/Diary.h \
     Common/Entry.h \
@@ -56,6 +59,7 @@ HEADERS += \
     Presentation/exerciseview.h \
     Presentation/loginview.h \
     Presentation/mainwindow.h \
+    Presentation/moodtrackingview.h \
     Presentation/moodview.h \
     Presentation/registerview.h \
     Presentation/topicview.h \
@@ -67,6 +71,7 @@ FORMS += \
     Presentation/exerciseview.ui \
     Presentation/loginview.ui \
     Presentation/mainwindow.ui \
+    Presentation/moodtrackingview.ui \
     Presentation/moodview.ui \
     Presentation/registerview.ui \
     Presentation/topicview.ui \

@@ -131,6 +131,8 @@ void TravelView::saveEntry(){
     int page = m_b->getNextPage(m_currentDiary, m_b->getCurrentUser().getUserId());
 
 
+
+
     //it is intentional that an entry which contains no other information than the userID, diaryID and the topic can still be saved, to enable the user to create an entry without input
     Common::Entry newEntry(m_b->getCurrentUser().getUserId(), page, m_note, m_date, m_currentDiary, topic, m_mood, m_pathToImg, m_pathToMap, m_place);
 

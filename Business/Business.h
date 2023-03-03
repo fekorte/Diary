@@ -8,6 +8,7 @@
 #include "EntryManager.h"
 #include "ExerciseManager.h"
 #include "UserManager.h"
+#include "MoodTrackManager.h"
 #include <QMap>
 #include <QString>
 
@@ -23,6 +24,7 @@ private:
     DiaryManager m_diaryManager;
     EntryManager m_entryManager;
     UserManager m_userManager;
+    MoodTrackManager m_moodTrackManager;
 
 public:
 
@@ -46,6 +48,8 @@ public:
     void writeTopics(const QStringList& topicList) override;
     const QString travelContinentChoice(const QString& decision, const QStringList& continents) override;
     void deleteImageFile(const QString& filePath) override;
+    void writeMoodTrackingData(QStringList& trackingDataList) override;
+    const QList<QStringList> loadSavedTrackingData(const QString& diaryName) override;
 
 
     //Diary related functions
