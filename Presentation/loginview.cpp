@@ -6,16 +6,14 @@
 #include <QString>
 
 /**
- * LoginView is a class that represents the login view for the application.
+ * Represents the login view for the application.
  * It inherits from QFrame, to enable the possibility to display a background image.
  *
- * This class takes a pointer to an IBusiness class in its constructor and saves it as an attribute.
- * It uses its pointer to IBusiness to interact with the business logic.
- *
- * Furthermore, the class overrides closeEvent to ensure that the pointer to IBusiness is deleted properly and to avoid memory leaks.
+ * Overrides closeEvent to ensure that the pointer to IBusiness is deleted properly and to avoid memory leaks.
  *
  * @author Chachulski, Korte, Mathea
  */
+
 
 LoginView::LoginView(Business::IBusiness* b, QWidget* parent) :
     QFrame(parent), ui(new Ui::LoginView), m_b(b){

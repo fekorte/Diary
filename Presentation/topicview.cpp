@@ -13,7 +13,6 @@
  */
 
 
-
 TopicView::TopicView(Business::IBusiness* b,QWidget* parent) :
     QWidget(parent),
     ui(new Ui::TopicView),

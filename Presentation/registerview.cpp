@@ -7,6 +7,11 @@
 #include <QString>
 
 /**
+ * Represents the register view for the application.
+ * Inherits from QFrame, to enable the possibility to display a background image.
+ *
+ * Overrides closeEvent to ensure that the pointer to IBusiness is deleted properly and to avoid memory leaks.
+ *
  * @author Chachulski, Korte, Mathea
  */
 

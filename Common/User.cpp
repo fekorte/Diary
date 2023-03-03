@@ -3,7 +3,7 @@
 
 /**
  * The User class represents a user of the system.
- * Attribute userId is being generated in class UserManager, other attributes are set through user input in RegisterView.
+ * Attribute userId is being generated in class UserManager.
  * Class provides stream operator overload for serialization.
  *
  * @author Chachulski, Korte, Mathea

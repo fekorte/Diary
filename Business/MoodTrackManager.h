@@ -19,8 +19,6 @@ public:
     MoodTrackManager();
     ~MoodTrackManager();
 
-
-
     void writeMoodTrackingData(QStringList& trackingDataList);
     const QList<QStringList> loadSavedTrackingData(const QString& diaryName);
 

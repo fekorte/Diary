@@ -9,6 +9,13 @@
 #include <QMouseEvent>
 #include <QDateTime>
 
+/**
+ * Class displays an image via its function loadImage by a passed filepath and enables the user
+ * to place a dot on the image via mouse click.
+ * The path to the altered image is returned by the signal 'returnMap'.
+ *
+ * @author Chachulski, Korte, Mathea
+ */
 
 TravelMapView::TravelMapView(QWidget *parent) :
     QWidget(parent),

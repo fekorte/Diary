@@ -26,6 +26,7 @@
  * @author Chachulski, Korte, Mathea
  */
 
+
 EntryView::EntryView(Business::IBusiness* b, const QString& currentDiary, QWidget* parent) :
     QWidget(parent), ui(new Ui::EntryView), m_b(b), m_currentDiary(currentDiary) {
 

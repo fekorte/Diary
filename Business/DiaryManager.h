@@ -8,7 +8,6 @@
 
 /*
  * @author Chachulski, Korte, Mathea
- *
  */
 
 namespace Business{
