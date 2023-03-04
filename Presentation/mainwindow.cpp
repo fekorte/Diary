@@ -167,6 +167,11 @@ void MainWindow::showTravelEntryView(){
 
 void MainWindow::showTrackingView(){
 
+    if(m_myDiaryMap.value(m_currentDiary).getEntryMap().isEmpty()){
+        QMessageBox::information(nullptr,"DiaryApp", "Please create an entry first before you track your mood.");
+        return;
+    }
+
     bool onlyTravelEntries;
     for(const Common::Entry& entry : m_myDiaryMap.value(m_currentDiary).getEntryMap()){
         if(!entry.getTopics().contains("Travelling")){
