@@ -1,6 +1,6 @@
 # DiaryApp
 
-This is a Diary Application in C++, written together with @AlgoArtee and @KaZebra.
+This C++ diary application, developed using Qt Creator, was written together with @AlgoArtee and @KaZebra as part of a university course.
 
 The user can:
 
