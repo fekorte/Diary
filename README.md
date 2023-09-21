@@ -1,6 +1,7 @@
 # DiaryApp
 
 This C++ diary application, developed using Qt Creator, was written together with @AlgoArtee and @KaZebra as part of a university course.
+To run the program, copy the 'Data' directory into the build folder.
 
 The user can:
 

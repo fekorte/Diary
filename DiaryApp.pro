@@ -84,7 +84,12 @@ RESOURCES += \
     Images.qrc
 
 DISTFILES += \
+    Data/.qmake.stash \
     Data/Diaries.bin \
+    Data/MoodTracking .bin \
+    Data/MoodTracking .bin \
+    Data/MoodTracking .bin \
+    Data/MoodTracking.txt \
     Data/Topics.bin \
     Data/User.bin \
     Data/angry.txt \
@@ -96,14 +101,3 @@ DISTFILES += \
     Diaries.bin \
     Entries.bin \
     \ \
-
-
-
-
-
-copydata.commands = if [ ! -d $$OUT_PWD/Data ]; then $(COPY_DIR) $$PWD/Data $$OUT_PWD; fi
-first.depends = $(first) copydata
-export(first.depends)
-export(copydata.commands)
-QMAKE_EXTRA_TARGETS += first copydata
-
